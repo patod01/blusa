@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- <lsink
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+   /> -->
+   <style>[x-cloak]{display: none !important;}</style>
+   <title>pete</title>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+
+
+<form>
+   <label for="user">User:</label>
+   <input type="text" name="user"><br>
+   <label for="pass">Pass:</label>
+   <input type="text" name="pass"><br>
+   <button>Login</button>
+</form>
+
+<style>table {max-width: 100%;margin: auto;}</style>
+
+<div x-data="{table_size: 6}">
+   <div class="botones">
+      <button id="Cuenta">Cuenta</button>
+      <button id="Log out">Log out</button>
+      <button id="Export">Export</button>
+      <button id="Save">Save</button>
+   </div>
+
+   <table id="registro" x-cloak>
+      <thead>
+         <tr>
+            <td class="cell-1">Fecha</td>
+            <td class="cell-2">Abono</td>
+            <td class="cell-3">Cargo</td>
+            <td class="cell-4" x-show="table_size >= 4">Motivo</td>
+            <td class="cell-5" x-show="table_size >= 5">Detalle</td>
+            <td class="cell-6" x-show="table_size >= 6">Fuente</td>
+         </tr>
+      </thead>
+      <tbody>
+         <tr id="row-1">
+            <td class="cell-1">celda 1</td>
+            <td class="cell-2">celda 2</td>
+            <td class="cell-3">celda 3</td>
+            <td class="cell-4" x-show="table_size >= 4">celda 4</td>
+            <td class="cell-5" x-show="table_size >= 5">celda 5</td>
+            <td class="cell-6" x-show="table_size >= 6">celda 6</td>
+         </tr>
+         <tr id="row-2">
+            <td class="cell-1">celda 1</td>
+            <td class="cell-2">celda 2</td>
+            <td class="cell-3">celda 3</td>
+            <td class="cell-4" x-show="table_size >= 4">celda 4</td>
+            <td class="cell-5" x-show="table_size >= 5">celda 5</td>
+            <td class="cell-6" x-show="table_size >= 6">celda 6</td>
+         </tr>
+         <tr id="row-3">
+            <td class="cell-1">celda 1</td>
+            <td class="cell-2">celda 2</td>
+            <td class="cell-3">celda 3</td>
+            <td class="cell-4" x-show="table_size >= 4">celda 4</td>
+            <td class="cell-5" x-show="table_size >= 5">celda 5</td>
+            <td class="cell-6" x-show="table_size >= 6">celda 6</td>
+         </tr>
+         <tr id="row-4">
+            <td class="cell-1">celda 1</td>
+            <td class="cell-2">celda 2</td>
+            <td class="cell-3">celda 3</td>
+            <td class="cell-4" x-show="table_size >= 4">celda 4</td>
+            <td class="cell-5" x-show="table_size >= 5">celda 5</td>
+            <td class="cell-6" x-show="table_size >= 6">celda 6</td>
+         </tr>
+      </tbody>
+   </table>
+
+   <div id="status">
+      <div id="count">count</div>
+      <div id="sum">sum</div>
+      <div id="average">average</div>
+   </div>
+
+   <div id="actions">
+      <div id="del-rec">del-rec</div>
+      <div id="new-rec">new-rec</div>
+      <div id="detail-level" @click="if (table_size >= 6) table_size=3; else table_size++">detail-level</div>
+      <div x-text="table_size"></div>
+   </div>
+</div>
+
+
+</body>
+</html>
