@@ -7,32 +7,53 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
    /> -->
-   <style>[x-cloak]{display: none !important;}</style>
-   <title>pete</title>
+   <style>
+      [x-cloak]{display: none !important;}
+      #log-form {z-index: 0;position: absolute;}
+   </style>
+   <title>Bolsa</title>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
 
-
-<form>
+<form id="log-form" 
+   x-data="{ usuario: '', password: '', logged: false }" 
+   x-show="!logged" 
+   @loggin.window="logged = !logged"
+   x-transition
+>
    <label for="user">User:</label>
-   <input type="text" name="user"><br>
+   <input type="text" id="user" x-model="usuario">
+   <span x-text="usuario"></span>
+   <br>
+
    <label for="pass">Pass:</label>
-   <input type="text" name="pass"><br>
-   <button>Login</button>
+   <input type="password" id="pass" x-model="password">
+   <span x-text="password"></span>
+   <br>
+
+   <button @click.prevent="$dispatch('loggin')">Login</button>
 </form>
+
+
 
 <style>table {max-width: 100%;margin: auto;}</style>
 
-<div x-data="{table_size: 6}">
+<div id="app"
+   x-data="{table_size: 6, show: false}"
+   x-show="show"
+   x-cloak @loggin.window="show = !show"
+   x-transition
+>
    <div class="botones">
-      <button id="Cuenta">Cuenta</button>
-      <button id="Log out">Log out</button>
-      <button id="Export">Export</button>
-      <button id="Save">Save</button>
+      <button id="cuenta">Cuenta</button>
+      <br>
+      <button id="log-out" @click="$dispatch('loggin')">Log out</button>
+      <button id="export">Export</button>
+      <button id="save">Save</button>
    </div>
 
-   <table id="registro" x-cloak>
+   <table id="registro">
       <thead>
          <tr>
             <td class="cell-1">Fecha</td>
@@ -79,20 +100,26 @@
       </tbody>
    </table>
 
-   <div id="status">
-      <div id="count">count</div>
-      <div id="sum">sum</div>
-      <div id="average">average</div>
-   </div>
 
+
+<!--    <hr>
+   <div id="status">
+      <div id="count" x-text="'count: '"></div>
+      <div id="sum" x-text="'sum: '"></div>
+      <div id="average" x-text="'average: '"></div>
+   </div>
+ -->
+
+
+   <hr>
    <div id="actions">
-      <div id="del-rec">del-rec</div>
-      <div id="new-rec">new-rec</div>
-      <div id="detail-level" @click="if (table_size >= 6) table_size=3; else table_size++">detail-level</div>
-      <div x-text="table_size"></div>
+      <button id="del-mode">Delete Mode</button>
+      <button id="new-rec">New Record</button>
+      <button id="detail-level"
+         @click="if (table_size >= 6) table_size=3; else table_size++"
+      >Detail Level</button>
    </div>
 </div>
-
 
 </body>
 </html>
