@@ -12,13 +12,14 @@
       #log-form {z-index: 0;position: absolute;}
    </style>
    <title>Bolsa</title>
+<script src="test_data.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
 
 <form id="log-form" 
    x-data="{ usuario: '', password: '', logged: false }" 
-   x-show="!logged" 
+   x-show="!(logged || dev)" 
    @loggin.window="logged = !logged"
    x-transition
 >
@@ -40,8 +41,8 @@
 <style>table {max-width: 100%;margin: auto;}</style>
 
 <div id="app"
-   x-data="{table_size: 6, show: false}"
-   x-show="show"
+   x-data="{table_size: 5, show: false}"
+   x-show="show || dev"
    x-cloak @loggin.window="show = !show"
    x-transition
 >
