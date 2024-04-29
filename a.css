@@ -1,0 +1,25 @@
+[x-cloak]{display: none !important;}
+
+table{max-width: 100%;margin: auto;}
+
+#log-form{z-index: 0;position: absolute;}
+
+.positive {
+     color: blue;
+     text-align: right;
+}
+
+.negative {
+     color: red;
+     text-align: right;
+}
+
+.positive::before, .negative::before {
+     content: "$";
+     float: left;
+}
+
+td {
+     border-style: solid;
+     border-color: black ;
+}

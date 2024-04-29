@@ -3,24 +3,30 @@
 <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- <lsink
+   <title>Bolsa</title>
+<!--    <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-   /> -->
-   <style>
-      [x-cloak]{display: none !important;}
-      #log-form {z-index: 0;position: absolute;}
-   </style>
-   <title>Bolsa</title>
-<script src="test_data.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+   />
+ -->
+   <link rel="stylesheet" href="a.css">
+   <script src="test_data.js"></script>
+   <script src="temp.js"></script>
+   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
+<main id="app"
+   x-data="{
+      usuario: '',
+      password: '',
+      logged: alvin.dev, // AAAAAAAAAAAA,
+      cuenta: '',
+   }"
+   @logueando="logged = !logged"
+>
 
-<form id="log-form" 
-   x-data="{ usuario: '', password: '', logged: false }" 
-   x-show="!(logged || dev)" 
-   @loggin.window="logged = !logged"
+<form id="log-form"
+   x-show="!logged"
    x-transition
 >
    <label for="user">User:</label>
@@ -33,94 +39,78 @@
    <span x-text="password"></span>
    <br>
 
-   <button @click.prevent="$dispatch('loggin')">Login</button>
+   <button @click.prevent="$dispatch('logueando')">Login</button>
 </form>
 
 
 
-<style>table {max-width: 100%;margin: auto;}</style>
-
-<div id="app"
-   x-data="{table_size: 5, show: false}"
-   x-show="show || dev"
-   x-cloak @loggin.window="show = !show"
+<div id="main"
+   x-data="{table_size: 5}"
+   x-show="logged"
+   x-cloak
    x-transition
 >
    <div class="botones">
       <button id="cuenta">Cuenta</button>
       <br>
-      <button id="log-out" @click="$dispatch('loggin')">Log out</button>
+      <button id="log-out" @click="$dispatch('logueando')">Log out</button>
+      <button id="export">Import</button>
       <button id="export">Export</button>
       <button id="save">Save</button>
    </div>
+   <hr>
+
+
 
    <table id="registro">
       <thead>
          <tr>
+            <td class="cell-0">Ix</td>
             <td class="cell-1">Fecha</td>
             <td class="cell-2">Abono</td>
             <td class="cell-3">Cargo</td>
-            <td class="cell-4" x-show="table_size >= 4">Motivo</td>
-            <td class="cell-5" x-show="table_size >= 5">Detalle</td>
-            <td class="cell-6" x-show="table_size >= 6">Fuente</td>
+            <td class="cell-4" x-show="table_size >= 5">Motivo</td>
+            <td class="cell-5" x-show="table_size >= 6">Detalle</td>
+            <td class="cell-6" x-show="table_size >= 7">Fuente</td>
          </tr>
       </thead>
       <tbody>
-         <tr id="row-1">
-            <td class="cell-1">celda 1</td>
-            <td class="cell-2">celda 2</td>
-            <td class="cell-3">celda 3</td>
-            <td class="cell-4" x-show="table_size >= 4">celda 4</td>
-            <td class="cell-5" x-show="table_size >= 5">celda 5</td>
-            <td class="cell-6" x-show="table_size >= 6">celda 6</td>
+         <template x-for="id in alvin.data.length">
+         <tr :id="'row-' + (id + 1)">
+            <td class="cell-0" x-text="id"></td>
+            <td class="cell-1" x-text="alvin.data[id - 1][0]"></td>
+            <td class="cell-2 positive" x-text="alvin.data[id - 1][1].toLocaleString('es')"></td>
+            <td class="cell-3 negative" x-text="alvin.data[id - 1][2].toLocaleString('es')"></td>
+            <td class="cell-4" x-text="alvin.data[id - 1][3]" x-show="table_size >= 5"></td>
+            <td class="cell-5" x-text="alvin.data[id - 1][4]" x-show="table_size >= 6"></td>
+            <td class="cell-6" x-text="alvin.data[id - 1][5]" x-show="table_size >= 7"></td>
          </tr>
-         <tr id="row-2">
-            <td class="cell-1">celda 1</td>
-            <td class="cell-2">celda 2</td>
-            <td class="cell-3">celda 3</td>
-            <td class="cell-4" x-show="table_size >= 4">celda 4</td>
-            <td class="cell-5" x-show="table_size >= 5">celda 5</td>
-            <td class="cell-6" x-show="table_size >= 6">celda 6</td>
-         </tr>
-         <tr id="row-3">
-            <td class="cell-1">celda 1</td>
-            <td class="cell-2">celda 2</td>
-            <td class="cell-3">celda 3</td>
-            <td class="cell-4" x-show="table_size >= 4">celda 4</td>
-            <td class="cell-5" x-show="table_size >= 5">celda 5</td>
-            <td class="cell-6" x-show="table_size >= 6">celda 6</td>
-         </tr>
-         <tr id="row-4">
-            <td class="cell-1">celda 1</td>
-            <td class="cell-2">celda 2</td>
-            <td class="cell-3">celda 3</td>
-            <td class="cell-4" x-show="table_size >= 4">celda 4</td>
-            <td class="cell-5" x-show="table_size >= 5">celda 5</td>
-            <td class="cell-6" x-show="table_size >= 6">celda 6</td>
-         </tr>
+         </template>
       </tbody>
    </table>
+   <hr>
 
 
 
-<!--    <hr>
-   <div id="status">
+<!--    <div id="status">
       <div id="count" x-text="'count: '"></div>
       <div id="sum" x-text="'sum: '"></div>
       <div id="average" x-text="'average: '"></div>
    </div>
+   <hr>
  -->
 
 
-   <hr>
+
    <div id="actions">
       <button id="del-mode">Delete Mode</button>
       <button id="new-rec">New Record</button>
       <button id="detail-level"
-         @click="if (table_size >= 6) table_size=3; else table_size++"
+         @click="if (table_size >= 7) table_size = 5; else table_size++"
       >Detail Level</button>
    </div>
 </div>
 
+</main>
 </body>
 </html>

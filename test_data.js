@@ -1,17 +1,19 @@
-dev = true;
+const alvin = {
+     dev: true,
 
-data = [
-     ['19-04-2024', 271637, 230757, 'juegos',      'generico 1',  'corriente'],
-     ['13-04-2024', 47749,  474781, 'actividades', 'generico 2',  'credito 2'],
-     ['07-04-2024', 625238, 187245, 'comida',      'generico 3',  'credito 2'],
-     ['05-04-2024', 153167, 320233, 'juegos',      'generico 4',  'credito 2'],
-     ['31-03-2024', 587461, 390925, 'actividades', 'generico 5',  'credito 2'],
-     ['10-04-2024', 357932, 178911, 'actividades', 'generico 6',  'credito 2'],
-     ['31-03-2024', 92780,  374369, 'actividades', 'generico 7',  'credito 2'],
-     ['15-04-2024', 489449, 303474, 'comida',      'generico 8',  'credito 1'],
-     ['29-03-2024', 463201, 185468, 'juegos',      'generico 9',  'credito 1'],
-     ['21-04-2024', 504918, 312476, 'comida',      'generico 10', 'corriente'],
-     ['14-04-2024', 276672, 214862, 'juegos',      'generico 11', 'credito 2'],
-     ['04-04-2024', 71323,  248443, 'juegos',      'generico 12', 'corriente'],
-     ['21-04-2024', 527471, 396922, 'actividades', 'generico 13', 'corriente'],
-];
+     data: [
+          ['01-04-2024', 553081, 419574, 'actividades', 'generico 1',  'credito 1'],
+          ['17-04-2024', 264900, 239049, 'juegos',      'generico 2',  'corriente'],
+          ['09-04-2024', 594559, 329587, 'juegos',      'generico 3',  'credito 2'],
+          ['17-04-2024', 127772, 379569, 'comida',      'generico 4',  'corriente'],
+          ['29-03-2024', 665592, 347177, 'actividades', 'generico 5',  'credito 1'],
+          ['22-04-2024', 334980, 118107, 'comida',      'generico 6',  'corriente'],
+          ['14-04-2024', 634232, 125942, 'comida',      'generico 7',  'credito 1'],
+          ['03-04-2024', 269900, 320397, 'actividades', 'generico 8',  'credito 2'],
+          ['01-04-2024', 141107, 282696, 'comida',      'generico 9',  'credito 1'],
+          ['23-04-2024', 475076, 134249, 'juegos',      'generico 10', 'credito 2'],
+          ['29-03-2024', 171233, 425305, 'juegos',      'generico 11', 'credito 1'],
+          ['30-03-2024', 58012,  411000, 'juegos',      'generico 12', 'credito 2'],
+          ['12-04-2024', 438883, 247146, 'juegos',      'generico 13', 'credito 1'],
+     ]
+}
