@@ -1,6 +1,7 @@
 app inicialmente orientada a telefono.
 
 `npm -i vite -g`
+
 `vite`
 
 backlog:

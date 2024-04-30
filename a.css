@@ -1,8 +1,35 @@
-[x-cloak]{display: none !important;}
+[x-cloak] {
+     display: none !important;
+}
 
-table{max-width: 100%;margin: auto;}
+#log-form {
+     top: 50%;
+     left: 50%;
+     translate: -50% -50%;
+     position: absolute;
+     input {
+          margin: 50px;
+     }
+}
 
-#log-form{z-index: 0;position: absolute;}
+body {
+     margin: 0%;
+}
+
+#registro {
+     width: 100%;
+/*     position: fixed;*/
+}
+
+tbody td {
+     border-style: solid;
+     border-color: green;
+}
+
+tbody {
+/*     position: absolute;*/
+/*     z-index: -1;*/
+}
 
 .positive {
      color: blue;
@@ -19,7 +46,35 @@ table{max-width: 100%;margin: auto;}
      float: left;
 }
 
-td {
-     border-style: solid;
-     border-color: black ;
+.arriba {
+     position: fixed;
+     width: 100%;
+     background: white;
+     padding-top: 7px;
+     padding-bottom: 7px;
+     border-bottom: solid 1px;
+}
+
+.abajo {
+     position: fixed;
+     width: 100%;
+     top: 100%;
+     background: white;
+     translate: 0 -100%;
+
+     #status {
+          padding-top: 5px;
+          border-top: solid 1px;
+          padding-bottom: 5px;
+          display: flex;
+          justify-content: space-evenly;
+     }
+
+     #actions {
+          padding-top: 13px;
+          border-top: solid 1px;
+          padding-bottom: 13px;
+          display: flex;
+          justify-content: space-evenly;
+     }
 }
