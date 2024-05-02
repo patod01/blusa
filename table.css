@@ -1,0 +1,43 @@
+#pillow {
+     height: 10vh;
+/*     margin-bottom: 10%;*/
+}
+
+#registros {
+/*     z-index: -1;*/
+     width: 100%;
+/*     top: 10vh;*/
+}
+
+thead {
+     position: fixed;
+     top: calc(10vh + 1px);
+     height: 2rem;
+     background: white;
+}
+
+tbody {
+     position: relative;
+     max-height: 50hv;
+     top: calc(10vh + 2rem);
+     z-index: -1;
+     td {
+          border-style: solid;
+          border-color: green;
+     }
+}
+
+.positive {
+     color: blue;
+     text-align: right;
+}
+
+.negative {
+     color: red;
+     text-align: right;
+}
+
+.positive::before, .negative::before {
+     content: "$";
+     float: left;
+}
