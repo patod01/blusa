@@ -1,0 +1,33 @@
+[x-cloak] {
+     display: none !important;
+}
+
+* {
+     margin: 0%;
+/*     font-family: Arial;*/
+/*     font-size: 13px;*/
+}
+
+#log-form {
+     top: 50%;
+     left: 50%;
+     translate: -50% -50%;
+     position: absolute;
+     input {
+          margin: 50px;
+     }
+}
+
+button {
+/*     max-height: 2em;*/
+}
+
+@media only screen and (orientation:landscape) {
+     #app {
+          display: none;
+     }
+     body::after {
+          content: "Si quieres usar esto en horizontal, FUCK YOU.\a Descarga la app.";
+          white-space: pre-wrap;
+     }
+}

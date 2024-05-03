@@ -1,5 +1,8 @@
 .arriba {
+/*     display: none;*/
      position: fixed;
+     overflow: hidden;
+     top: 0%;
      width: 100%;
      height: 10vh;
      background: white;
@@ -12,7 +15,7 @@
 /*     display: none;*/
      position: fixed;
      width: 100%;
-     height: 10vh;
+     height: calc(10vh + 1px);
      top: 100%;
      background: white;
      translate: 0 -100%;

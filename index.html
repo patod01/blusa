@@ -2,21 +2,28 @@
 <html>
 <head>
    <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta
+      name="viewport"
+      content="width=device-width,
+      initial-scale=1,
+      user-scalable=no"
+   >
    <title>Bolsa</title>
 <!--    <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
    />
  -->
-   <link rel="stylesheet" href="a.css">
+   <link rel="stylesheet" href="main.css">
    <link rel="stylesheet" href="panel.css">
    <link rel="stylesheet" href="table.css">
+   <link rel="manifest" href="manifest.json" />
    <script src="test_data.js"></script>
    <script src="temp.js"></script>
    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
+
 <main id="app"
    x-data="{
       usuario: '',
@@ -47,7 +54,7 @@
 
 
 <div id="main"
-   x-data="{table_size: 5}"
+   x-data="{table_size: 6}"
    x-show="logged"
    x-cloak
    x-transition
@@ -60,6 +67,7 @@
       <button id="export">Export</button>
       <button id="save">Save</button>
    </div>
+
 
 
    <table id="registros">
@@ -117,5 +125,6 @@
 </div>
 
 </main>
+
 </body>
 </html>
