@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+   /> -->
+
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #otro {
+            background-color: green;
+            width: calc(50% + 0px);
+            height: 60px;
+            overflow: auto;
+            scrollbar-width: none;
+        }
+        @media (prefers-color-scheme: dark) {
+            body::after {
+                content: "holi";
+                white-space: pre-wrap;
+            }
+        }
+    </style>
+    <div>
+        <div id="otro">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo aspernatur repellat rerum accusantium eaque dolor sed eius necessitatibus expedita sequi quos, illum facilis voluptas quidem nam ullam cumque, commodi temporibus?</div>
+    </div>
+    <label>
+  Brightness
+  <input type="range" />
+</label>
+</body>
+</html>

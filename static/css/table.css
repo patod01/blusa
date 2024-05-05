@@ -1,26 +1,23 @@
 #pillow {
+/*      display: none; */
      height: 10vh;
-/*     display: none;*/
-/*     margin-bottom: 10%;*/
-}
-
-#registros {
-/*     z-index: -1;*/
-     width: 100%;
-/*     top: 10vh;*/
 }
 
 thead {
      position: fixed;
-     top: calc(10vh + 1px);
-     height: 2rem;
+     top: calc(10vh - 1px);
      background: white;
+     line-height: 2rem;
+     th {
+          padding-top: 0px;
+          padding-bottom: 0px;
+          border-bottom: solid 1px;
+     }
 }
 
 tbody {
      position: relative;
-     max-height: 50hv;
-     top: calc(10vh + 2rem);
+     top: calc(10vh + 1rem);
      z-index: -1;
      td {
           border-style: solid;

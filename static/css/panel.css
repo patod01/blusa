@@ -1,22 +1,21 @@
 .arriba {
 /*     display: none;*/
+     z-index: 1;
      position: fixed;
-     overflow: hidden;
-     top: 0%;
-     width: 100%;
+     top: 0vh;
+     width: 100vw;
      height: 10vh;
      background: white;
-/*     padding-top: 7px;*/
-/*     padding-bottom: 7px;*/
      border-bottom: solid 1px;
 }
 
 .abajo {
-/*     display: none;*/
+/*     display: none; */
+     z-index: 1;
      position: fixed;
-     width: 100%;
-     height: calc(10vh + 1px);
-     top: 100%;
+     width: 100vw;
+     height: calc(10vh);
+     top: calc(100vh + 1px);
      background: white;
      translate: 0 -100%;
 
