@@ -2,17 +2,21 @@
      display: none !important;
 }
 
-* {
+:root {
      font-size: 13px;
 }
 
 #log-form {
+     position: absolute;
      top: 50%;
      left: 50%;
      translate: -50% -50%;
-     position: absolute;
+     font-size: 16px;
      input {
           margin: 50px;
+     }
+     button {
+          font-size: 16px;
      }
 }
 

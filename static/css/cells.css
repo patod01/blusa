@@ -1,5 +1,6 @@
 .cell-0 {
-     width: 100vw;
+          border-left: solid 1px black;
+/*     width: 100vw;*/
 }
 /*
 .cell-1 {

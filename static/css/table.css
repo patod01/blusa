@@ -1,27 +1,27 @@
-#pillow {
-/*      display: none; */
-     height: 10vh;
+#tabla span {
+     padding: 1px 7px 3px 5px;
+     display: inline-block;
+     border-right: solid 1px black;
 }
 
-thead {
+.cabecera {
      position: fixed;
-     top: calc(10vh - 1px);
-     background: white;
-     line-height: 2rem;
-     th {
-          padding-top: 0px;
-          padding-bottom: 0px;
-          border-bottom: solid 1px;
+     top: calc(10vh + 1px);
+     border-bottom: solid 1px black;
+     span {
+          height: 4vh;
+          align-content: center;  
      }
 }
 
-tbody {
-     position: relative;
-     top: calc(10vh + 1rem);
-     z-index: -1;
-     td {
-          border-style: solid;
-          border-color: green;
+.registros {
+     position: fixed;
+     top: calc(14vh + 2px);
+     height: calc(76vh - 2px);
+     overflow: auto;
+     scrollbar-width: none;
+     div {
+          border-bottom: solid 1px black;
      }
 }
 
