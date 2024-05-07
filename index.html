@@ -32,7 +32,7 @@
    x-data="{
       usuario: '',
       password: '',
-      logged: false, // AAAAAAAAAAAA,
+      logged: alvin.dev, // AAAAAAAAAAAA,
       cuenta: '',
    }"
    @logueando="logged = !logged"
@@ -56,7 +56,7 @@
 
 
 <div id="main"
-   x-data="{table_size: 6}"
+   x-data="{table_size: 5}"
    x-show="logged"
    x-cloak
    x-transition
@@ -72,26 +72,26 @@
 
 
 
-   <div id="tabla">
-      <div class="cabecera" role="group">
-         <span class="cell-0">Ix</span>
-         <span class="cell-1">Fecha</span>
-         <span class="cell-2">Abono</span>
-         <span class="cell-3">Cargo</span>
-         <span class="cell-4" x-show="table_size >= 5">Motivo</span>
-         <span class="cell-5" x-show="table_size >= 6">Detalle</span>
-         <span class="cell-6" x-show="table_size >= 7">Fuente</span>
+   <div class="tabla" :class="'level-' + table_size">
+      <div class="cabecera">
+         <span class="cell-1">Ix</span>
+         <span class="cell-2">Fecha</span>
+         <span class="cell-3">Abono</span>
+         <span class="cell-4">Cargo</span>
+         <span class="cell-5" x-show="table_size >= 5">Motivo</span>
+         <span class="cell-6" x-show="table_size >= 6">Detalle</span>
+         <span class="cell-7" x-show="table_size >= 7">Fuente</span>
       </div>
       <div class="registros">
          <template x-for="id in alvin.data.length">
-         <div :id="'row-' + (id + 1)">
-            <span class="cell-0" x-text="id"></span>
-            <span class="cell-1" x-text="alvin.data[id - 1][0]"></span>
-            <span class="cell-2 positive" x-text="alvin.data[id - 1][1].toLocaleString('es')"></span>
-            <span class="cell-3 negative" x-text="alvin.data[id - 1][2].toLocaleString('es')"></span>
-            <span class="cell-4" x-text="alvin.data[id - 1][3]" x-show="table_size >= 5"></span>
-            <span class="cell-5" x-text="alvin.data[id - 1][4]" x-show="table_size >= 6"></span>
-            <span class="cell-6" x-text="alvin.data[id - 1][5]" x-show="table_size >= 7"></span>
+         <div :id="'row-' + (id)">
+            <span class="cell-1" x-text="id"></span>
+            <span class="cell-2" x-text="alvin.data[id - 1][0]"></span>
+            <span class="cell-3 positive" x-text="alvin.data[id - 1][1].toLocaleString('es-CL')"></span>
+            <span class="cell-4 negative" x-text="alvin.data[id - 1][2].toLocaleString('es-CL')"></span>
+            <span class="cell-5" x-text="alvin.data[id - 1][3]" x-show="table_size >= 5"></span>
+            <span class="cell-6" x-text="alvin.data[id - 1][4]" x-show="table_size >= 6"></span>
+            <span class="cell-7" x-text="alvin.data[id - 1][5]" x-show="table_size >= 7"></span>
          </div>
          </template>
       </div>
@@ -110,7 +110,9 @@
          <button id="new-rec">New Record</button>
          <button id="detail-level"
             @click="if (table_size >= 7) table_size = 5; else table_size++"
-         >Detail Level</button>
+         >
+            Detail Level
+         </button>
       </div>
    </div>
 </div>

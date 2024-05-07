@@ -28,7 +28,7 @@ button {
 
 @media only screen and (orientation:landscape) {
      #app {
-          display: none;
+/*          display: none;*/
      }
      body::after {
           content: "Si quieres usar esto en horizontal, FUCK YOU.\a Descarga la app.";

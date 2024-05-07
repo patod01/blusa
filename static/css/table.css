@@ -1,27 +1,27 @@
-#tabla span {
-     padding: 1px 7px 3px 5px;
-     display: inline-block;
-     border-right: solid 1px black;
-}
-
 .cabecera {
      position: fixed;
-     top: calc(10vh + 1px);
-     border-bottom: solid 1px black;
+     top: 10vh;
+     border-bottom: solid 2px black;
+     scrollbar-width: none;
      span {
           height: 4vh;
-          align-content: center;  
+          background-color: lightblue;
+          font-weight: bold;
      }
 }
 
 .registros {
      position: fixed;
-     top: calc(14vh + 2px);
-     height: calc(76vh - 2px);
+     top: 14vh;
+     height: 76vh;
+     z-index: -1;
      overflow: auto;
      scrollbar-width: none;
      div {
           border-bottom: solid 1px black;
+     }
+     span {
+          height: 3vh;
      }
 }
 

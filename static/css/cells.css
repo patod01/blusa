@@ -1,29 +1,92 @@
-.cell-0 {
-          border-left: solid 1px black;
-/*     width: 100vw;*/
-}
-/*
 .cell-1 {
-     max-width: 10vw;
+     border-left: solid 1px black;
+     width: 7vw;
+     max-width: 7vw;
+     background-color: #ddd;
 }
 
-.cell-2 {
-     max-width: 10vw;
+.level-5 {
+     .cell-2 {
+          width: 21vw;
+          max-width: 21vw;
+     }
+
+     .cell-3 {
+          width: 22vw;
+          max-width: 22vw;
+     }
+
+     .cell-4 {
+          width: 22vw;
+          max-width: 22vw;
+     }
+
+     .cell-5 {
+          width: 28vw;
+          max-width: 28vw;
+     }
 }
 
-.cell-3 {
-     max-width: 10vw;
+.level-6 {
+     .cell-2 {
+          width: 17vw;
+          max-width: 17vw;
+     }
+
+     .cell-3 {
+          width: 17vw;
+          max-width: 17vw;
+     }
+
+     .cell-4 {
+          width: 17vw;
+          max-width: 17vw;
+     }
+
+     .cell-5 {
+          width: 21vw;
+          max-width: 21vw;
+     }
+
+     .cell-6 {
+          width: 21vw;
+          max-width: 21vw;
+     }
 }
 
-.cell-4 {
-     max-width: 10vw;
-}
+.level-7 {
+     .cell-1 {
+          width: 5vw;
+          max-width: 5vw;
+     }
 
-.cell-5 {
-     max-width: 10vw;
-}
+     .cell-2 {
+          width: 16vw;
+          max-width: 16vw;
+     }
 
-.cell-6 {
-     max-width: 10vw;
+     .cell-3 {
+          width: 16vw;
+          max-width: 16vw;
+     }
+
+     .cell-4 {
+          width: 16vw;
+          max-width: 16vw;
+     }
+
+     .cell-5 {
+          width: 16vw;
+          max-width: 16vw;
+     }
+
+     .cell-6 {
+          width: 16vw;
+          max-width: 16vw;
+     }
+
+     .cell-7 {
+          width: 15vw;
+          max-width: 15vw;
+     }
 }
-*/
