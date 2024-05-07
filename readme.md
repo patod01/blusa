@@ -6,11 +6,12 @@ app inicialmente orientada a telefono.
 
 backlog:
 - login de usuario.
+     - log in.
      - criptografia.
 - log off.
 - seleccion de cuenta.
 - listar transacciones.
-     - cambiar tama;o de la lista (columnas mostradas).
+     - ~~cambiar tama;o de la lista (columnas mostradas).~~
      - perimitr edicion al tocar el registro.
      - seleccion multiple de celdas.
           - identificacion de tipo de dato.
@@ -33,3 +34,6 @@ backlog:
      - boton para confirmar.
 - exportar informacion a csv.
 - boton para guardar.
+- PWA:
+     - prompt automatico para instalar pwa.
+     - boton con estado en db.

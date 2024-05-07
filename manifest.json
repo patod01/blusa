@@ -1,7 +1,7 @@
 {
+     "name": "bLusa",
      "display": "standalone",
      "orientation": "portrait",
-     "name": "Mi bluseeta uwu",
      "icons": [
           {
                "src": "static/logo.png",
@@ -9,5 +9,6 @@
                "sizes": "512x512"
           }
      ],
+     "background_color": "black",
      "start_url": "index.html"
 }
