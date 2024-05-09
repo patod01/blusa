@@ -41,5 +41,8 @@
           padding-bottom: 13px;
           display: flex;
           justify-content: space-evenly;
+          button {
+               width: 24vw;
+          }
      }
 }

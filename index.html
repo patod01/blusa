@@ -57,7 +57,7 @@
 
 
 <div id="main"
-   x-data="{table_size: 5}"
+   x-data="{table_size: 5, registros: alvin.data}"
    x-show="logged"
    x-cloak
    x-transition
@@ -84,7 +84,7 @@
          <span class="cell-7" x-show="table_size >= 7">Fuente</span>
       </div>
       <div class="registros">
-         <template x-for="id in alvin.data.length">
+         <template x-for="id in registros.length">
          <div :id="'row-' + (id)">
             <span class="cell-1" x-text="id"></span>
             <span class="cell-2" x-text="alvin.data[id - 1][0]"></span>
@@ -107,7 +107,11 @@
          <div id="average" x-text="'average: x'"></div>
       </div>
       <div id="actions">
-         <button id="del-mode">Delete Mode</button>
+         <button id="del-mode"
+            @click="registros.pop()"
+         >
+            Delete Mode
+         </button>
          <button id="new-rec">New Record</button>
          <button id="detail-level"
             @click="if (table_size >= 7) table_size = 5; else table_size++"
