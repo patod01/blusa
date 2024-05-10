@@ -45,4 +45,9 @@
                width: 24vw;
           }
      }
+
+     .borrando #del-mode {
+          width: 55vw;
+          background-color: red;
+     }
 }

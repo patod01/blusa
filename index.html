@@ -35,6 +35,7 @@
       password: '',
       logged: alvin.dev, // AAAAAAAAAAAA,
       cuenta: '',
+      modo: 'main',
    }"
    @logueando="logged = !logged"
 >
@@ -84,15 +85,15 @@
          <span class="cell-7" x-show="table_size >= 7">Fuente</span>
       </div>
       <div class="registros">
-         <template x-for="id in registros.length">
-         <div :id="'row-' + (id)">
-            <span class="cell-1" x-text="id"></span>
-            <span class="cell-2" x-text="alvin.data[id - 1][0]"></span>
-            <span class="cell-3 positive" x-text="alvin.data[id - 1][1].toLocaleString('es-CL')"></span>
-            <span class="cell-4 negative" x-text="alvin.data[id - 1][2].toLocaleString('es-CL')"></span>
-            <span class="cell-5" x-text="alvin.data[id - 1][3]" x-show="table_size >= 5"></span>
-            <span class="cell-6" x-text="alvin.data[id - 1][4]" x-show="table_size >= 6"></span>
-            <span class="cell-7" x-text="alvin.data[id - 1][5]" x-show="table_size >= 7"></span>
+         <template x-for="(fila, id) in registros">
+         <div :id="'row-' + (id + 1)">
+            <span class="cell-1" x-text="id + 1"></span>
+            <span class="cell-2" x-text="fila[0]"></span>
+            <span class="cell-3 positive" x-text="fila[1].toLocaleString('es-CL')"></span>
+            <span class="cell-4 negative" x-text="fila[2].toLocaleString('es-CL')"></span>
+            <span class="cell-5" x-text="fila[3]" x-show="table_size >= 5"></span>
+            <span class="cell-6" x-text="fila[4]" x-show="table_size >= 6"></span>
+            <span class="cell-7" x-text="fila[5]" x-show="table_size >= 7"></span>
          </div>
          </template>
       </div>
@@ -106,13 +107,14 @@
          <div id="sum" x-text="'sum: x'"></div>
          <div id="average" x-text="'average: x'"></div>
       </div>
-      <div id="actions">
+      <div id="actions" :class="modo == 'borrar'? 'borrando': ''">
          <button id="del-mode"
-            @click="registros.pop()"
+            @click="if (modo == 'main') modo = 'borrar'; else modo = 'main';"
+            x-text="modo == 'borrar'? `Confirmar (${2})`: 'Delete Mode'"
          >
             Delete Mode
          </button>
-         <button id="new-rec">New Record</button>
+         <button id="new-rec" x-show="modo != 'borrar'">New Record</button>
          <button id="detail-level"
             @click="if (table_size >= 7) table_size = 5; else table_size++"
          >
