@@ -90,3 +90,16 @@
           max-width: 15vw;
      }
 }
+
+.del-cell {
+     position: absolute;
+     right: 0;
+     width: 100vw;
+     text-align: right;
+     background-color: rgba(69, 69, 69, 0.33);
+
+     input:checked {
+          border-color: black;
+          background-color: red;
+     }
+}

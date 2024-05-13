@@ -29,9 +29,9 @@ backlog:
           - detalle.
      - autocompletado para motivo y detalle.
      - importar csv.
-- modo de eliminacion de registros.
-     - marcar registros a eliminar.
-     - boton para confirmar.
+- ~~modo de eliminacion de registros.~~
+     - ~~marcar registros a eliminar.~~
+     - ~~boton para confirmar.~~
 - exportar informacion a csv.
 - boton para guardar.
 - PWA:

@@ -36,6 +36,7 @@
       logged: alvin.dev, // AAAAAAAAAAAA,
       cuenta: '',
       modo: 'main',
+      changed: false,
    }"
    @logueando="logged = !logged"
 >
@@ -94,6 +95,15 @@
             <span class="cell-5" x-text="fila[3]" x-show="table_size >= 5"></span>
             <span class="cell-6" x-text="fila[4]" x-show="table_size >= 6"></span>
             <span class="cell-7" x-text="fila[5]" x-show="table_size >= 7"></span>
+            <span class="del-cell" x-show="modo == 'borrar'">
+               <input
+                  class="del-switch"
+                  type="checkbox"
+                  role="switch"
+                  @click="fila[6] = !fila[6]"
+                  @del-off.window="$el.checked = false"
+               >
+            </span>
          </div>
          </template>
       </div>
@@ -108,18 +118,40 @@
          <div id="average" x-text="'average: x'"></div>
       </div>
       <div id="actions" :class="modo == 'borrar'? 'borrando': ''">
-         <button id="del-mode"
-            @click="if (modo == 'main') modo = 'borrar'; else modo = 'main';"
-            x-text="modo == 'borrar'? `Confirmar (${2})`: 'Delete Mode'"
+
+         <button id="del-button"
+            @click="
+               if (modo == 'main')
+                  modo = 'borrar';
+               else {
+                  $dispatch('del-off');
+                  registros = registros.filter((fila) => !fila[6]);
+                  modo = 'main';
+               }
+            "
+            x-text="modo == 'borrar'? `Confirmar eliminacion (${
+               registros.reduce((cum, fila) => fila[6]? cum + 1: cum, 0)
+            })`: 'Delete Mode'"
          >
             Delete Mode
          </button>
-         <button id="new-rec" x-show="modo != 'borrar'">New Record</button>
-         <button id="detail-level"
+
+
+
+         <button id="new-rec-button" x-show="modo != 'borrar'"
+            @click=""
+         >
+            New Record
+         </button>
+
+
+
+         <button id="detail-level-button"
             @click="if (table_size >= 7) table_size = 5; else table_size++"
          >
             Detail Level
          </button>
+
       </div>
    </div>
 </div>
