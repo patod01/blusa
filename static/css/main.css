@@ -22,8 +22,7 @@
 
 button {
      height: 2em;
-     padding-top: 0em;
-     padding-bottom: 0em;
+     padding: 0em;
 }
 
 @media only screen and (orientation:landscape) {

@@ -25,6 +25,10 @@
      }
 }
 
+[id*="row"]:nth-child(odd) {
+     background-color: rgba(0, 0, 0, 0.11);
+}
+
 .positive {
      color: blue;
      text-align: right;

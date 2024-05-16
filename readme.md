@@ -1,8 +1,9 @@
 app inicialmente orientada a telefono.
 
-`npm -i vite -g`
-
-`vite`
+```
+npm -i vite -g
+vite
+```
 
 backlog:
 - login de usuario.
@@ -35,5 +36,5 @@ backlog:
 - exportar informacion a csv.
 - boton para guardar.
 - PWA:
-     - prompt automatico para instalar pwa.
-     - boton con estado en db.
+     - prompt automatico para instalar PWA.
+     - estado para no volver a insistir en instalacion de PWA.
