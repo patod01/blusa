@@ -66,12 +66,12 @@
    x-transition
 >
    <div class="arriba">
-      <button id="cuenta">Cuenta</button>
+      <button id="cuenta" disabled>Cuenta</button>
       <br>
       <button id="log-out" @click="$dispatch('logueando')">Log out</button>
-      <button id="export">Import</button>
-      <button id="export">Export</button>
-      <button id="save">Save</button>
+      <button id="import" disabled>Import</button>
+      <button id="export" disabled>Export</button>
+      <button id="save" disabled>Save</button>
    </div>
 
 
@@ -111,6 +111,47 @@
    </div>
 
 
+   <dialog id="dogo" x-show="modo == 'addition'">
+      <template x-if="modo == 'addition'">
+      <article @click.outside="modo = 'main'; dogo.close()">
+         <header>
+            <b>add new log</b>
+         </header>
+         <div>
+            fecha: <input type="date">
+         </div>
+
+         <div>
+            <span
+               x-data="{abono: true}"
+               @click="abono = !abono"
+               x-text="abono? 'Abono': 'Cargo'"
+            >
+            </span>: <input type="number">
+         </div>
+
+         <div>
+            Motivo: <input type="text">
+         </div>
+
+         <div>
+            Detalle: <input type="text">
+         </div>
+
+         <div>
+            Fuente: <input type="text">
+         </div>
+         <footer>
+            <div>
+               <button @click="modo = 'main'; dogo.close()">cancelar</button>
+               <button @click="modo = 'main'; dogo.close()">registrar</button>
+            </div>
+         </footer>
+      </article>
+      </template>
+   </dialog>
+
+
 
    <div class="abajo">
       <div id="status">
@@ -118,8 +159,10 @@
          <div id="sum" x-text="'sum: x'"></div>
          <div id="average" x-text="'average: x'"></div>
       </div>
-      <div id="actions" :class="modo == 'borrar'? 'borrando': ''">
 
+
+
+      <div id="actions" :class="modo == 'borrar'? 'borrando': ''">
          <button id="del-button"
             @click="
                if (modo == 'main')
@@ -140,7 +183,7 @@
 
 
          <button id="new-rec-button" x-show="modo != 'borrar'"
-            @click=""
+            @click="if (modo == 'main') {modo = 'addition'; dogo.showModal()}"
          >
             New Record
          </button>
@@ -152,9 +195,9 @@
          >
             Detail Level
          </button>
-
       </div>
    </div>
+
 </div>
 
 </main>
