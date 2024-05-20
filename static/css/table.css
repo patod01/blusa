@@ -43,3 +43,47 @@
      content: "$";
      float: left;
 }
+
+#dogo {
+     position: absolute;
+     top: 50vh;
+     left: 50vw;
+     width: 80vw;
+     translate: -50% -50%;
+     border: solid;
+     border-radius: 11px;
+     box-shadow: 0px 0px 11px 3px;
+     padding: 0px;
+
+     .header {
+          background-color: rgba(0, 0, 0, 0.05);
+          padding: 11px;
+     }
+
+     .section {
+          border-top: solid 0.1px dimgray;
+          border-bottom: solid 0.1px dimgray;
+          padding: 11px;
+          margin: 0px;
+          span {
+               display: inline-block;
+               background-color: rgba(0, 0, 0, 0.05);
+               padding: 3px 7px;
+               margin: 3px;
+               border-radius: 10% 50%;
+               width: 5rem;
+               text-align: center;
+          }
+     }
+
+     .footer {
+          margin: 0px;
+          background-color: rgba(0, 0, 0, 0.05);
+          padding: 11px;
+          display: flex;
+          justify-content: space-evenly;
+          button {
+               width: 24vw;
+          }
+     }
+}

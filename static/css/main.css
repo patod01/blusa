@@ -30,25 +30,7 @@ button {
           display: none;
      }
      body::after {
-          content: "Si quieres usar esto en horizontal, FUCK YOU.\a Descarga la app.";
+          content: "Si quieres usar esto en horizontal, FUCK YOU.\a Descarga la app 🤑.";
           white-space: pre-wrap;
      }
 }
-
-/*#dogo {
-     position: absolute;
-     top: 50vh;
-     left: 50vw;
-     translate: -50% -50%;
-     background-color: white;
-     margin: 100px;
-     min-width: 60vw;
-     input {
-          max-width: 40vw;
-     }
-     padding: 15px;
-     border: solid;
-     border-radius: 17px;
-     box-shadow: 0px 0px 11px 7px;
-}
-*/
