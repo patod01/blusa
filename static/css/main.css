@@ -34,3 +34,13 @@ button {
           white-space: pre-wrap;
      }
 }
+
+@media (prefers-color-scheme: dark) {
+     #app {
+          display: none;
+     }
+     body::after {
+          content: "abandona el lado oscuro 🐔.";
+          white-space: pre-wrap;
+     }
+}

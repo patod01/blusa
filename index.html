@@ -47,12 +47,10 @@
    x-transition
 >
    <label for="user">User:</label>
-   <input type="text" id="user" x-model="usuario">
-   <!-- <span x-text="usuario"></span> -->
+   <input id="user" type="text" x-model="usuario">
 
    <label for="pass">Pass:</label>
-   <input type="password" id="pass" x-model="password">
-   <!-- <span x-text="password"></span> -->
+   <input id="pass" type="password" x-model="password">
 
    <button @click.prevent="$dispatch('logueando')">Login</button>
 </form>
