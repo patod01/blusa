@@ -52,7 +52,7 @@
      translate: -50% -50%;
      border: solid;
      border-radius: 11px;
-     box-shadow: 0px 0px 11px 3px;
+     box-shadow: 0px 3px 11px 3px;
      padding: 0px;
 
      .header {

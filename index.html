@@ -111,50 +111,47 @@
    </div>
 
 
-   <!-- <div > -->
-      <article id="dogo" x-show="modo == 'addition'" @click.outside="modo = 'main'">
-         <div class="header">
-            <b>add new log</b>
+
+   <article id="dogo" x-show="modo == 'addition'">
+      <div class="header">
+         <b>add new log</b>
+      </div>
+
+      <template x-if="modo == 'addition'">
+      <div class="section">
+         <div>
+            <span>Fecha:</span><input type="date">
          </div>
 
-         <template x-if="modo == 'addition'">
-         <div class="section">
-            <div>
-               <span>Fecha:</span><input type="date">
-            </div>
-
-            <div>
-               <span
-                  x-data="{abono: true}"
-                  @click="abono = !abono"
-                  x-text="abono? 'Abono:': 'Cargo:'"
-                  :style="{backgroundColor, color, fontWeight}=(() => {if (abono) return {backgroundColor: 'green', color: 'white'}; else return {backgroundColor: 'red', color: 'white', fontWeight: 'bold'}})()"
-               >
-               </span><input type="number">
-            </div>
-
-            <div>
-               <span>Motivo:</span><input type="text">
-            </div>
-
-            <div>
-               <span>Detalle:</span><input type="text">
-            </div>
-
-            <div>
-               <span>Fuente:</span><input type="text">
-            </div>
+         <div>
+            <span
+               x-data="{abono: true}"
+               @click="abono = !abono"
+               x-text="abono? 'Abono:': 'Cargo:'"
+               :style="{backgroundColor, color, fontWeight} = (() => {if (abono) return {backgroundColor: 'green', color: 'white'}; else return {backgroundColor: 'red', color: 'white', fontWeight: 'bold'}})()"
+            >
+            </span><input type="number">
          </div>
-         </template>
 
-         <div class="footer">
-            <!-- <div> -->
-               <button @click="modo = 'main'">cancelar</button>
-               <button @click="modo = 'main'">registrar</button>
-            <!-- </div> -->
+         <div>
+            <span>Motivo:</span><input type="text">
          </div>
-      </article>
-   <!-- </div> -->
+
+         <div>
+            <span>Detalle:</span><input type="text">
+         </div>
+
+         <div>
+            <span>Fuente:</span><input type="text">
+         </div>
+      </div>
+      </template>
+
+      <div class="footer">
+            <button @click="modo = 'main'">cancelar</button>
+            <button @click="modo = 'main'">registrar</button>
+      </div>
+   </article>
 
 
 
@@ -169,6 +166,7 @@
 
       <div id="actions" :class="modo == 'borrar'? 'borrando': ''">
          <button id="del-button"
+            :disabled="modo == 'addition'"
             @click="
                if (modo == 'main')
                   modo = 'borrar';
@@ -188,6 +186,7 @@
 
 
          <button id="new-rec-button" x-show="modo != 'borrar'"
+            :disabled="modo == 'addition'"
             @click="if (modo == 'main') modo = 'addition'"
          >
             New Record
