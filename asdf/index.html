@@ -3,7 +3,7 @@
 <head>
    <link
       rel="stylesheet"
-      hrefs="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
    />
 
    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -22,6 +22,125 @@
 
 <button popovertarget="pop" popovertargetaction="show">boton</button>
 <button popovertarget="pop" popovertargetaction="hide">boton</button>
+
+
+
+<div style="position: absolute; top: 30%; left: 30%;">
+
+<!-- ejemplo sin "componentes" -->
+   <div x-data="{algo:0}"
+      @algode.window="algo++"
+      x-text="`tenemos nuestro ${algo}`"
+      @click="$dispatch('sarna')"
+   ></div>
+   <hr>
+
+   <div x-data="{ count: 0 }">
+      <button @click="count++; $dispatch('algode')">Increment</button>
+      <span x-text="count"></span>
+   </div>
+
+   <div x-data="{ count: 0 }">
+      <button @click="count++; $dispatch('algode')">Increment</button>
+      <span x-text="count"></span>
+   </div>
+   <hr>
+
+
+
+<!-- Alpine.store define variables globales (a nivel de documento) -->
+   <div x-data="$store.switch1(1)" x-bind="clicky"></div>
+   <div x-data="$store.switch1(2)" x-bind="clicky"></div>
+   <div x-data="Alpine.store('switch1')" x-bind="clicky"></div>
+   <div x-data="Alpine.store('switch1')" x-bind="clicky"></div>
+   <script>
+      document.addEventListener('alpine:init', () => {
+         Alpine.store('switch1', (numero = 0) => ({
+            count: 0,
+            init(){console.log(`inicie el store ${numero}`)},
+            clicky: {
+               ['x-text']() {return `Store${numero} is ${this.count}`},
+               ['@sarna.window']() {console.log(`Store${numero}`)},
+               ['@click']() {
+                  this.count++;
+                  this.$dispatch('algode');
+               }
+            }
+         }))
+      })
+   </script>
+   <hr>
+
+
+
+<!-- Alpine.data se diferencia de store y las funciones en que solo se puede
+ingresar a sus variables definidas desde alpine.js y no desde el scope global
+(ejemplo: consola del navegador), respetando jerarquia de scopes existentes -->
+   <div x-data="switch2(1)" x-bind="clicky"></div>
+   <div x-data="switch2(2)" x-bind="clicky"></div>
+   <script>
+      document.addEventListener('alpine:init', () => {
+         Alpine.data('switch2', (numero = 0) => ({
+            count: 5,
+            init(){console.log(`inicie el data ${numero}`)},
+            clicky: {
+               ['x-text']() {return `Data${numero} is ${this.count}`},
+               ['@sarna.window']() {console.log(`Data${numero}`)},
+               ['@click']() {
+                  this.count++;
+                  this.$dispatch('algode');
+               }
+            }
+         }))
+      })
+   </script>
+   <hr>
+
+
+
+<!-- esta opcion es para atributos, no para definir scopes como con x-data -->
+   <button x-data="{count:0}" x-bind="switch3(1)"></button>
+   <div x-data="{count:0}" x-bind="switch3(2).clicky"></div>
+   <script>
+      document.addEventListener('alpine:init', () => {
+         Alpine.bind('switch3', (numero = 0) => ({
+            ['x-text']() {return `Bind${numero} is ${this.count}`},
+            ['@click'](){console.log('soy bind');this.count++},
+            clicky: {
+               ['x-text']() {return `Bind${numero} is ${this.count}`},
+               ['@sarna.window']() {console.log(`Bind${numero}`)},
+               ['@click']() {
+                  this.count++;
+                  this.$dispatch('algode');
+               }
+            }
+         }))
+      })
+   </script>
+   <hr>
+
+
+
+<!-- las funciones son equivalentes a usar Alpine.store -->
+   <div x-data="switch4(1)" x-bind="sure"></div>
+   <div x-data="switch4(2)" x-bind="sure"></div>
+   <script>
+      function switch4(numero = 0) { return {
+         count: 10,
+         init(){console.log(`inicie el func ${numero}`)},
+         sure: {
+            ['x-text']() {return `Func${numero} is ${this.count}`},
+            ['@sarna.window']() {console.log(`Func${numero}`)},
+            ['@click']() {
+               this.count++;
+               this.$dispatch('algode')
+            },
+         }
+      }}
+   </script>
+   <hr>
+
+</div>
 
 </body>
 </html>
