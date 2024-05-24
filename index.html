@@ -110,7 +110,18 @@
 
 
 
-   <article id="dogo" x-show="modo == 'addition'">
+   <article
+      x-data="{ new_row: {
+         fecha: null,
+         abono: null,
+         cargo: null,
+         motivo: null,
+         detalle: null,
+         fuente: null
+      } }"
+      id="dogo"
+      x-show="modo == 'addition'"
+   >
       <div class="header">
          <b>add new log</b>
       </div>
@@ -118,36 +129,37 @@
       <template x-if="modo == 'addition'">
       <div class="section">
          <div>
-            <span>Fecha:</span><input type="date">
+            <span>Fecha:</span><input type="date" x-model="new_row['fecha']">
          </div>
 
-         <div>
+         <div x-data="{abono: true}">
             <span
-               x-data="{abono: true}"
-               @click="abono = !abono"
+               @click="abono = !abono; new_row['abono'] = null; new_row['cargo'] = null"
                x-text="abono? 'Abono:': 'Cargo:'"
                :style="{backgroundColor, color, fontWeight} = (() => {if (abono) return {backgroundColor: 'green', color: 'white'}; else return {backgroundColor: 'red', color: 'white', fontWeight: 'bold'}})()"
             >
-            </span><input type="number">
+            </span>
+            <input type="number" x-show="abono" x-model="new_row['abono']">
+            <input type="number" x-show="!abono" x-model="new_row['cargo']">
          </div>
 
          <div>
-            <span>Motivo:</span><input type="text">
+            <span>Motivo:</span><input type="text" x-model="new_row['motivo']">
          </div>
 
          <div>
-            <span>Detalle:</span><input type="text">
+            <span>Detalle:</span><input type="text" x-model="new_row['detalle']">
          </div>
 
          <div>
-            <span>Fuente:</span><input type="text">
+            <span>Fuente:</span><input type="text" x-model="new_row['fuente']">
          </div>
       </div>
       </template>
 
       <div class="footer">
             <button @click="modo = 'main'">cancelar</button>
-            <button @click="modo = 'main'">registrar</button>
+            <button @click="modo = 'main'; registros.push(get_shit(new_row)); a = registros">registrar</button>
       </div>
    </article>
 
