@@ -12,7 +12,7 @@ backlog:
 - log off.
 - seleccion de cuenta.
 - listar transacciones.
-     - ~~cambiar tama;o de la lista (columnas mostradas).~~
+     - [x] cambiar tama;o de la lista (columnas mostradas).
      - perimitr edicion al tocar el registro.
      - seleccion multiple de celdas.
           - identificacion de tipo de dato.
@@ -20,19 +20,19 @@ backlog:
           - suma de numeros.
           - promedio de numeros.
           - recuento general.
-- ingresar registro de transaccion.
-     - siguiente campo al pulsar enter.
-     - campos:
-          - fecha;
-          - abono;
-          - cargo;
-          - motivo;
-          - detalle.
+- [] ingresar registro de transaccion.
+     - ~~siguiente campo al pulsar enter.~~
+     - [x] campos:
+          - [x] fecha;
+          - [x] abono;
+          - [x] cargo;
+          - [x] motivo;
+          - [x] detalle.
      - autocompletado para motivo y detalle.
-     - importar csv.
-- ~~modo de eliminacion de registros.~~
-     - ~~marcar registros a eliminar.~~
-     - ~~boton para confirmar.~~
+- importar csv.
+- [x] modo de eliminacion de registros.
+     - [x] marcar registros a eliminar.
+     - [x] boton para confirmar.
 - exportar informacion a csv.
 - boton para guardar.
 - PWA:
