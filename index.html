@@ -164,7 +164,12 @@
 
       <div class="footer">
             <button @click="modo = 'main'">cancelar</button>
-            <button @click="modo = 'main'; registros.push(get_shit(new_row)); a = registros">registrar</button>
+            <button @click="
+               modo = 'main';
+               registros.push(get_shit(new_row));
+               a = registros;
+               for (let item in new_row) {new_row[item] = null}
+            ">registrar</button>
       </div>
    </article>
 
