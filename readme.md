@@ -13,14 +13,14 @@ backlog:
 - seleccion de cuenta.
 - listar transacciones.
      - [x] cambiar tama;o de la lista (columnas mostradas).
-     - perimitr edicion al tocar el registro.
+     - [ ] perimitr edicion al tocar el registro.
      - seleccion multiple de celdas.
           - identificacion de tipo de dato.
           - recuento de numeros.
           - suma de numeros.
           - promedio de numeros.
           - recuento general.
-- [] ingresar registro de transaccion.
+- [ ] ingresar registro de transaccion.
      - ~~siguiente campo al pulsar enter.~~
      - [x] campos:
           - [x] fecha;
@@ -29,12 +29,13 @@ backlog:
           - [x] motivo;
           - [x] detalle.
      - autocompletado para motivo y detalle.
-- importar csv.
 - [x] modo de eliminacion de registros.
      - [x] marcar registros a eliminar.
      - [x] boton para confirmar.
-- exportar informacion a csv.
 - boton para guardar.
+- exportar informacion a csv.
+- importar csv.
 - PWA:
+     - pagina principal separada de la app.
      - prompt automatico para instalar PWA.
      - estado para no volver a insistir en instalacion de PWA.
