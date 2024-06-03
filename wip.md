@@ -1,4 +1,1 @@
 - prompt pwa.
-- componentes.
-- botones:
-    - edit entry.

@@ -23,7 +23,7 @@
    <link rel="stylesheet" href="static/css/table.css">
    <link rel="stylesheet" href="static/css/cells.css">
 
-   <link rel="manifest" href="manifest.json" />
+   <link rel="manifest" href="manifest.json">
 
    <script src="static/js/test_data.js"></script>
    <script src="static/js/temp.js"></script>
@@ -60,7 +60,19 @@
 
 
 <div id="main"
-   x-data="{table_size: 5, registros: alvin.data}"
+   x-data="{
+      table_size: 5,
+      registros: alvin.data,
+      new_row: {
+         fecha: null,
+         abono: null,
+         cargo: null,
+         motivo: null,
+         detalle: null,
+         fuente: null
+      },
+      new_row_index: null
+   }"
    x-show="logged"
    x-cloak
    x-transition
@@ -77,7 +89,8 @@
    </div>
 
 
-   <!--! panel principal: tabla de reggstros -->
+
+   <!--! panel principal: tabla de registros -->
    <div class="tabla" :class="'level-' + table_size">
       <div class="cabecera">
          <span class="cell-1">Ix</span>
@@ -90,7 +103,23 @@
       </div>
       <div class="registros">
          <template x-for="(fila, id) in registros">
-         <div :id="'row-' + (id + 1)">
+         <div :id="'row-' + (id + 1)"
+            @click="
+               if (modo == 'main') {
+                  modo = 'edition';
+                  new_row_index = parseInt($el.id.split('-')[1]) - 1;
+                  let cell = 0;
+                  for (let item in new_row) {
+                     if (item == 'fecha') {
+                        new_row[item] = registros[new_row_index][cell].split('-').reverse().join('-');
+                     } else {
+                        new_row[item] = registros[new_row_index][cell];
+                     }
+                     cell++;
+                  }
+               }
+            "
+         >
             <span class="cell-1" x-text="id + 1"></span>
             <span class="cell-2" x-text="fila[0]"></span>
             <span class="cell-3 positive" x-text="fila[1].toLocaleString('es-CL')"></span>
@@ -115,23 +144,11 @@
 
 
    <!--! formulario para agregar registros -->
-   <article
-      x-data="{ new_row: {
-         fecha: null,
-         abono: null,
-         cargo: null,
-         motivo: null,
-         detalle: null,
-         fuente: null
-      } }"
-      id="dogo"
-      x-show="modo == 'addition'"
-   >
+   <article id="dogo" x-show="modo == 'addition' || modo == 'edition'" x-transition>
       <div class="header">
-         <b>add new log</b>
+         <b x-text="modo == 'addition'? 'add new log': 'edit log'"></b>
       </div>
 
-      <template x-if="modo == 'addition'">
       <div class="section">
          <div>
             <span>Fecha:</span><input type="date" x-model="new_row['fecha']">
@@ -160,16 +177,21 @@
             <span>Fuente:</span><input type="text" x-model="new_row['fuente']">
          </div>
       </div>
-      </template>
 
       <div class="footer">
             <button @click="modo = 'main'">cancelar</button>
-            <button @click="
-               modo = 'main';
-               registros.push(get_shit(new_row));
-               a = registros;
-               for (let item in new_row) {new_row[item] = null}
-            ">registrar</button>
+            <button
+               x-text="modo == 'addition'? 'registrar': 'confirmar'"
+               @click="
+                  if (modo == 'addition') {
+                     registros.push(get_shit(new_row));
+                  } else {
+                     registros[new_row_index] = get_shit(new_row);
+                  }
+                  modo = 'main';
+                  for (let item in new_row) {new_row[item] = null;}
+               "
+            ></button>
       </div>
    </article>
 
@@ -217,8 +239,8 @@
 
 
          <button id="detail-level-button"
-            @click="if (table_size >= 7) table_size = 5; else table_size++"
-         >
+            @click="if (table_size >= 7) table_size = 5; else table_size++;a = registros;"
+         ><!-- elimiminar `a` en el futuro -->
             Detail Level
          </button>
       </div>
