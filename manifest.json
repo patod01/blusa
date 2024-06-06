@@ -1,12 +1,12 @@
 {
-     "name": "bLusa",
+     "name": "bLosa",
      "display": "standalone",
      "orientation": "portrait",
      "icons": [
           {
                "src": "static/icon.png",
                "type": "image/png",
-               "sizes": "512x512"
+               "sizes": "256x256"
           }
      ],
      "background_color": "black",

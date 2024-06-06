@@ -8,18 +8,17 @@ vite
 backlog:
 - login de usuario.
      - log in.
-     - criptografia.
 - log off.
 - seleccion de cuenta.
-- listar transacciones.
+- [x] listar transacciones.
      - [x] cambiar tama;o de la lista (columnas mostradas).
-     - [ ] perimitr edicion al tocar el registro.
-     - seleccion multiple de celdas.
-          - identificacion de tipo de dato.
-          - recuento de numeros.
-          - suma de numeros.
-          - promedio de numeros.
-          - recuento general.
+     - [x] editar al tocar el registro.
+- seleccion multiple de celdas.
+     - identificacion de tipo de dato.
+     - recuento de numeros.
+     - suma de numeros.
+     - promedio de numeros.
+     - recuento general.
 - [ ] ingresar registro de transaccion.
      - ~~siguiente campo al pulsar enter.~~
      - [x] campos:
@@ -28,7 +27,7 @@ backlog:
           - [x] cargo;
           - [x] motivo;
           - [x] detalle.
-     - autocompletado para motivo y detalle.
+     - [ ] autocompletado para motivo, detalle y fuente.
 - [x] modo de eliminacion de registros.
      - [x] marcar registros a eliminar.
      - [x] boton para confirmar.
@@ -37,5 +36,6 @@ backlog:
 - importar csv.
 - PWA:
      - pagina principal separada de la app.
-     - prompt automatico para instalar PWA.
-     - estado para no volver a insistir en instalacion de PWA.
+     - [ ] prompt automatico para instalar PWA.
+     - [x] estado para no volver a insistir en instalacion de PWA.
+- criptografia.

@@ -16,3 +16,17 @@ function get_shit({ fecha, abono, cargo, motivo, detalle, fuente }) {
      ];
      return new_log;
 }
+
+if (localStorage.getItem('install_app_alert') == null) {
+     localStorage.setItem('install_app_alert', true);
+}
+
+if (localStorage.getItem('last_version') == null) {
+     localStorage.setItem('last_version', 'v0.0.0');
+}
+
+onbeforeinstallprompt = (event) => {
+     if (localStorage.getItem('install_app_alert') == 'true') {
+          install_banner.showModal();
+     }
+};

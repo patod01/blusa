@@ -39,12 +39,19 @@
       cuenta: '',
       modo: 'main',
       changed: false,
+      install_app_alert: localStorage.getItem('install_app_alert') == 'true',
+      revert_app_alert() {
+         localStorage.setItem('install_app_alert',
+            localStorage.getItem('install_app_alert') == 'false'
+         );
+         this.install_app_alert = localStorage.getItem('install_app_alert') == 'true';
+      }
    }"
    @logueando="logged = !logged"
 >
 
 <!--! formulario de inicio de sesion -->
-<form id="log-form"
+<div id="log-form"
    x-show="!logged"
    x-transition
 >
@@ -55,7 +62,22 @@
    <input id="pass" type="password" x-model="password">
 
    <button @click.prevent="$dispatch('logueando')">Login</button>
-</form>
+</div>
+
+
+
+<!--! banner personalizado para solicitar instalar app -->
+<dialog id="install_banner">
+   <div>
+      wanna install app?
+      <button id="install_app_alert" @click="revert_app_alert"
+         x-text="install_app_alert? 'i guess': 'please, no'"
+      >
+      </button>
+      <div x-show="!install_app_alert">refresh the page to use it the wrong way</div>
+      <div x-show="install_app_alert">go to options and install it. You can do it!</div>
+   </div>
+</dialog>
 
 
 
@@ -129,6 +151,7 @@
             <span class="cell-7" x-text="fila[5]" x-show="table_size >= 7"></span>
             <span class="del-cell" x-show="modo == 'borrar'">
                <input
+                  :id="'del-' + (id + 1)"
                   class="del-switch"
                   type="checkbox"
                   role="switch"
@@ -151,7 +174,7 @@
 
       <div class="section">
          <div>
-            <span>Fecha:</span><input type="date" x-model="new_row['fecha']">
+            <span>Fecha:</span><input name="fecha" type="date" x-model="new_row['fecha']">
          </div>
 
          <div x-data="{abono: true}">
@@ -161,20 +184,20 @@
                :style="{backgroundColor, color, fontWeight} = (() => {if (abono) return {backgroundColor: 'green', color: 'white'}; else return {backgroundColor: 'red', color: 'white', fontWeight: 'bold'}})()"
             >
             </span>
-            <input type="number" x-show="abono" x-model="new_row['abono']">
-            <input type="number" x-show="!abono" x-model="new_row['cargo']">
+            <input name="abono" type="number" x-show="abono" x-model="new_row['abono']">
+            <input name="cargo" type="number" x-show="!abono" x-model="new_row['cargo']">
          </div>
 
          <div>
-            <span>Motivo:</span><input type="text" x-model="new_row['motivo']">
+            <span>Motivo:</span><input name="motivo" type="text" x-model="new_row['motivo']">
          </div>
 
          <div>
-            <span>Detalle:</span><input type="text" x-model="new_row['detalle']">
+            <span>Detalle:</span><input name="detalle" type="text" x-model="new_row['detalle']">
          </div>
 
          <div>
-            <span>Fuente:</span><input type="text" x-model="new_row['fuente']">
+            <span>Fuente:</span><input name="fuente" type="text" x-model="new_row['fuente']">
          </div>
       </div>
 
