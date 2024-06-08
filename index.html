@@ -75,7 +75,13 @@
       >
       </button>
       <div x-show="!install_app_alert">refresh the page to use it the wrong way</div>
-      <div x-show="install_app_alert">go to options and install it. You can do it!</div>
+      <div x-show="install_app_alert">
+         <div>go to options and install it. You can do it!</div>
+         <div style="text-align: center;">
+            <button @click="install_prompt.prompt()">install app!</button>
+         </div>
+      </div>
+      <button x-data="{ a: getPWADisplayMode }" x-text="a"></button>
    </div>
 </dialog>
 
@@ -103,6 +109,7 @@
    <!--! panel superior -->
    <div class="arriba">
       <button id="cuenta" disabled>Cuenta</button>
+      <button x-data="{ a: getPWADisplayMode }" x-text="a"></button>
       <br>
       <button id="log-out" @click="$dispatch('logueando')">Log out</button>
       <button id="import" disabled>Import</button>

@@ -1,4 +1,5 @@
 let a; // test var to watch `registros``
+let install_prompt;
 
 function get_shit({ fecha, abono, cargo, motivo, detalle, fuente }) {
      if (fecha == null) fecha = '';
@@ -29,4 +30,20 @@ onbeforeinstallprompt = (event) => {
      if (localStorage.getItem('install_app_alert') == 'true') {
           install_banner.showModal();
      }
+     install_prompt = event;
 };
+
+window.addEventListener('appinstalled', () => {
+  // Optionally, send analytics event to indicate successful install
+  console.log('PWA was installed');
+});
+
+function getPWADisplayMode() {
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+  if (document.referrer.startsWith('android-app://')) {
+    return 'twa';
+  } else if (navigator.standalone || isStandalone) {
+    return 'standalone';
+  }
+  return 'browser';
+}

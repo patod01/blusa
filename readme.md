@@ -1,6 +1,6 @@
 app inicialmente orientada a telefono.
 
-```
+```bash
 npm -i vite -g
 vite
 ```
@@ -34,8 +34,8 @@ backlog:
 - boton para guardar.
 - exportar informacion a csv.
 - importar csv.
-- PWA:
-     - pagina principal separada de la app.
-     - [ ] prompt automatico para instalar PWA.
+- [ ] PWA:
+     - [ ] pagina principal separada de la app.
+     - [x] prompt automatico para instalar PWA.
      - [x] estado para no volver a insistir en instalacion de PWA.
 - criptografia.
