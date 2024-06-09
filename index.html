@@ -31,25 +31,6 @@
 </head>
 <body>
 
-<!--! banner personalizado para solicitar instalar app -->
-<dialog id="install_banner">
-   <div>
-      wanna install app?
-      <button id="install_app_alert" @click="revert_app_alert"
-         x-text="install_app_alert? 'i guess': 'please, no'"
-      >
-      </button>
-      <div x-show="!install_app_alert">refresh the page to use it the wrong way</div>
-      <div x-show="install_app_alert">
-         <div>go to options and install it. You can do it!</div>
-         <div style="text-align: center;">
-            <button @click="install_prompt.prompt()">install app!</button>
-         </div>
-      </div>
-      <button x-data="{ a: getPWADisplayMode }" x-text="a"></button>
-   </div>
-</dialog>
-
 <!--! main app view -->
 <main id="app"
    x-data="{
@@ -67,6 +48,29 @@
    }"
    @logueando="logged = !logged"
 >
+
+<!--! banner personalizado para solicitar instalar app -->
+<dialog id="install_banner">
+   <div>
+      wanna install app?
+      <button id="install_app_alert" @click="revert_app_alert"
+         x-text="install_app_alert? 'i guess': 'please, no'"
+      >
+      </button>
+      <div x-show="!install_app_alert">
+         <div>refresh the page to use it the wrong way</div>
+      </div>
+      <div x-data="{a: false}" x-show="install_app_alert">
+         <div>go to options and install it. You can do it!</div>
+         <div style="text-align: center;">
+            <button @click="install_prompt.prompt(); a = true">install app!</button>
+         </div>
+         <div x-show="a">after installing it,</div>
+         <div x-show="a">you might need to do a manual refresh</div>
+      </div>
+      <button x-data="{ a: getPWADisplayMode }" x-text="a"></button>
+   </div>
+</dialog>
 
 <!--! formulario de inicio de sesion -->
 <div id="log-form"
@@ -109,7 +113,10 @@
    <div class="arriba">
       <div style="margin: 3px;">
          <button id="cuenta" disabled>Cuenta</button>
-         <button x-data="{ a: getPWADisplayMode }" x-text="a"></button>
+         <button x-data="{ a: getPWADisplayMode }"
+            x-text="a"
+            @click="revert_app_alert"
+         ></button>
       </div>
 
       <div style="margin: 3px; display: inline-block;">
