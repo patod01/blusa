@@ -26,6 +26,10 @@ if (localStorage.getItem('last_version') == null) {
      localStorage.setItem('last_version', 'v0.0.0');
 }
 
+if (localStorage.getItem('data') == null) {
+     localStorage.setItem('data', JSON.stringify([]));
+}
+
 onbeforeinstallprompt = (event) => {
      if (localStorage.getItem('install_app_alert') == 'true') {
           install_banner.showModal();

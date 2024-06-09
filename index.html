@@ -31,14 +31,32 @@
 </head>
 <body>
 
+<!--! banner personalizado para solicitar instalar app -->
+<dialog id="install_banner">
+   <div>
+      wanna install app?
+      <button id="install_app_alert" @click="revert_app_alert"
+         x-text="install_app_alert? 'i guess': 'please, no'"
+      >
+      </button>
+      <div x-show="!install_app_alert">refresh the page to use it the wrong way</div>
+      <div x-show="install_app_alert">
+         <div>go to options and install it. You can do it!</div>
+         <div style="text-align: center;">
+            <button @click="install_prompt.prompt()">install app!</button>
+         </div>
+      </div>
+      <button x-data="{ a: getPWADisplayMode }" x-text="a"></button>
+   </div>
+</dialog>
+
+<!--! main app view -->
 <main id="app"
    x-data="{
       usuario: '',
       password: '',
       logged: alvin.dev, // AAAAAAAAAAAA,
       cuenta: '',
-      modo: 'main',
-      changed: false,
       install_app_alert: localStorage.getItem('install_app_alert') == 'true',
       revert_app_alert() {
          localStorage.setItem('install_app_alert',
@@ -66,31 +84,12 @@
 
 
 
-<!--! banner personalizado para solicitar instalar app -->
-<dialog id="install_banner">
-   <div>
-      wanna install app?
-      <button id="install_app_alert" @click="revert_app_alert"
-         x-text="install_app_alert? 'i guess': 'please, no'"
-      >
-      </button>
-      <div x-show="!install_app_alert">refresh the page to use it the wrong way</div>
-      <div x-show="install_app_alert">
-         <div>go to options and install it. You can do it!</div>
-         <div style="text-align: center;">
-            <button @click="install_prompt.prompt()">install app!</button>
-         </div>
-      </div>
-      <button x-data="{ a: getPWADisplayMode }" x-text="a"></button>
-   </div>
-</dialog>
-
-
-
-<div id="main"
+<div id="main-body"
    x-data="{
       table_size: 5,
       registros: alvin.data,
+      modo: 'main',
+      changed: false,
       new_row: {
          fecha: null,
          abono: null,
@@ -99,7 +98,7 @@
          detalle: null,
          fuente: null
       },
-      new_row_index: null
+      old_row_index: null
    }"
    x-show="logged"
    x-cloak
@@ -114,7 +113,8 @@
       <button id="log-out" @click="$dispatch('logueando')">Log out</button>
       <button id="import" disabled>Import</button>
       <button id="export" disabled>Export</button>
-      <button id="save" disabled>Save</button>
+      <button id="save" @click="changed = false" :disabled="!changed">Save</button>
+      <button x-text="changed"></button>
    </div>
 
 
@@ -136,13 +136,13 @@
             @click="
                if (modo == 'main') {
                   modo = 'edition';
-                  new_row_index = parseInt($el.id.split('-')[1]) - 1;
+                  old_row_index = parseInt($el.id.split('-')[1]) - 1;
                   let cell = 0;
                   for (let item in new_row) {
                      if (item == 'fecha') {
-                        new_row[item] = registros[new_row_index][cell].split('-').reverse().join('-');
+                        new_row[item] = registros[old_row_index][cell].split('-').reverse().join('-');
                      } else {
-                        new_row[item] = registros[new_row_index][cell];
+                        new_row[item] = registros[old_row_index][cell];
                      }
                      cell++;
                   }
@@ -173,7 +173,7 @@
 
 
 
-   <!--! formulario para agregar registros -->
+   <!--! formulario para agregar o editar registros -->
    <article id="dogo" x-show="modo == 'addition' || modo == 'edition'" x-transition>
       <div class="header">
          <b x-text="modo == 'addition'? 'add new log': 'edit log'"></b>
@@ -216,7 +216,7 @@
                   if (modo == 'addition') {
                      registros.push(get_shit(new_row));
                   } else {
-                     registros[new_row_index] = get_shit(new_row);
+                     registros[old_row_index] = get_shit(new_row);
                   }
                   modo = 'main';
                   for (let item in new_row) {new_row[item] = null;}
@@ -229,7 +229,7 @@
 
    <!--! panel inferior -->
    <div class="abajo">
-      <div id="status">
+      <div id="status-bar">
          <div id="count" x-text="'count: x'"></div>
          <div id="sum" x-text="'sum: x'"></div>
          <div id="average" x-text="'average: x'"></div>
