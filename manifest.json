@@ -1,5 +1,5 @@
 {
-     "name": "bLosa",
+     "name": "bolsa",
      "display": "standalone",
      "orientation": "portrait",
      "icons": [
@@ -9,6 +9,8 @@
                "sizes": "256x256"
           }
      ],
-     "background_color": "black",
-     "start_url": "index.html"
+     "background_color": "#AAAAAA",
+     "theme_color": "green",
+     "start_url": "index.html",
+     "version": "0.1.0"
 }

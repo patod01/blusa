@@ -1,9 +1,9 @@
 {
-  "app_name": "Blusa",
+  "app_name": "blusa",
   "alp_ver": "",
   "pyt_ver": "",
   "sqlite_ver": "",
   "docker_ver": "",
   "author": "patod01",
-  "app_ver": "0.0.0"
+  "app_ver": "0.1.0"
 }

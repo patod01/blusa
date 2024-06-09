@@ -23,7 +23,7 @@ if (localStorage.getItem('install_app_alert') == null) {
 }
 
 if (localStorage.getItem('last_version') == null) {
-     localStorage.setItem('last_version', 'v0.0.0');
+     localStorage.setItem('last_version', 'v0.1.0');
 }
 
 if (localStorage.getItem('data') == null) {
