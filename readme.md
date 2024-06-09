@@ -31,7 +31,7 @@ backlog:
 - [x] modo de eliminacion de registros.
      - [x] marcar registros a eliminar.
      - [x] boton para confirmar.
-- boton para guardar.
+- [x] boton para guardar datos localmente.
 - exportar informacion a csv.
 - importar csv.
 - [ ] PWA:

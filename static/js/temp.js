@@ -38,16 +38,15 @@ onbeforeinstallprompt = (event) => {
 };
 
 window.addEventListener('appinstalled', () => {
-  // Optionally, send analytics event to indicate successful install
-  console.log('PWA was installed');
+     console.log('PWA was installed');
 });
 
 function getPWADisplayMode() {
-  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-  if (document.referrer.startsWith('android-app://')) {
-    return 'twa';
-  } else if (navigator.standalone || isStandalone) {
-    return 'standalone';
-  }
-  return 'browser';
+     const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+     if (document.referrer.startsWith('android-app://')) {
+          return 'twa';
+     } else if (navigator.standalone || isStandalone) {
+          return 'standalone';
+     }
+     return 'browser';
 }
