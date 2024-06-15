@@ -1,16 +1,24 @@
 {
-     "name": "bolsa",
+     "name": "Bolsa",
+     "short_name": "bolsa",
+     "description": "una app para angeles",
      "display": "standalone",
+     "ddisplay_override": ["window-controls-overlay"],
      "orientation": "portrait",
      "icons": [
           {
                "src": "static/icon.png",
                "type": "image/png",
                "sizes": "256x256"
+          },
+          {
+               "src": "static/yicon.png",
+               "type": "image/png",
+               "sizes": "512x512"
           }
      ],
      "background_color": "#AAAAAA",
-     "theme_color": "green",
-     "start_url": "index.html",
-     "version": "0.1.0"
+     "theme_color": "#BBBBBB",
+     "start_url": "/",
+     "id": "/?pwa"
 }

@@ -19,6 +19,12 @@ backlog:
      - suma de numeros.
      - promedio de numeros.
      - recuento general.
+- resumen de totales.
+     - filtro de fechas.
+     - filtro de categorias (motivo, detalle, fuente).
+     - recuento de registros.
+     - suma de abonos y cargos.
+     - promedio de numeros.
 - [ ] ingresar registro de transaccion.
      - ~~siguiente campo al pulsar enter.~~
      - [x] campos:
