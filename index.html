@@ -77,7 +77,7 @@
    x-show="!logged"
    x-transition
 >
-   <div>Bolsa - v0.2.0</div>
+   <div>Bolsa - v0.2.1</div>
 
    <label for="user">User:</label>
    <input id="user" type="text" x-model="usuario">
@@ -257,6 +257,8 @@
                @click="
                   if (modo == 'addition') {
                      registros.push(get_shit(new_row));
+                     if (new_index != null)
+                        move_from(registros, registros.length - 1, new_index);
                   } else {
                      registros[old_index] = get_shit(new_row);
                      if (new_index != null && new_index != old_index)
