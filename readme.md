@@ -13,6 +13,10 @@ backlog:
 - [x] listar transacciones.
      - [x] cambiar tama;o de la lista (columnas mostradas).
      - [x] editar al tocar el registro.
+          - abrir con 'abono' o 'cargo' segun corresponda.
+     - [ ] cambiar indice de fila.
+          - [x] en modo 'edicion'.
+          - en modo 'agregar'.
 - seleccion multiple de celdas.
      - identificacion de tipo de dato.
      - recuento de numeros.

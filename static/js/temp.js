@@ -50,3 +50,7 @@ function getPWADisplayMode() {
      }
      return 'browser';
 }
+
+function move_from(registros, old_index, new_index) {
+     registros.splice(new_index, 0, registros.splice(old_index,1)[0]);
+}

@@ -77,7 +77,7 @@
    x-show="!logged"
    x-transition
 >
-   <div>Bolsa - v0.1.0</div>
+   <div>Bolsa - v0.2.0</div>
 
    <label for="user">User:</label>
    <input id="user" type="text" x-model="usuario">
@@ -90,6 +90,7 @@
 
 
 
+<!--! viewport de la app -->
 <div id="main-body"
    x-data="{
       table_size: 5,
@@ -104,7 +105,7 @@
          detalle: null,
          fuente: null
       },
-      old_row_index: null
+      old_index: null
    }"
    x-show="logged"
    x-cloak
@@ -158,13 +159,13 @@
             @click="
                if (modo == 'main') {
                   modo = 'edition';
-                  old_row_index = parseInt($el.id.split('-')[1]) - 1;
+                  old_index = parseInt($el.id.split('-')[1]) - 1;
                   let cell = 0;
                   for (let item in new_row) {
                      if (item == 'fecha') {
-                        new_row[item] = registros[old_row_index][cell].split('-').reverse().join('-');
+                        new_row[item] = registros[old_index][cell].split('-').reverse().join('-');
                      } else {
-                        new_row[item] = registros[old_row_index][cell];
+                        new_row[item] = registros[old_index][cell];
                      }
                      cell++;
                   }
@@ -196,9 +197,28 @@
 
 
    <!--! formulario para agregar o editar registros -->
-   <article id="dogo" x-show="modo == 'addition' || modo == 'edition'" x-transition>
-      <div class="header">
-         <b x-text="modo == 'addition'? 'add new log': 'edit log'"></b>
+   <article id="dogo"
+      x-show="modo == 'addition' || modo == 'edition'"
+      x-transition
+      x-data="{show_index_form: false, new_index: null}"
+   >
+      <div class="header"
+         x-init="$watch('modo', valor => {
+            if (valor == 'main') {show_index_form = false; new_index = null;}
+         })"
+         @click="new_index = old_index; show_index_form = !show_index_form;"
+      >
+         <b
+            x-text="
+               modo == 'addition'?
+                  'add new log':
+                  `edit log #${old_index + 1} ---${show_index_form? 'v': '>'}`
+            "
+         ></b>
+         <div x-show="show_index_form">
+            <span>Poner despues de la fila:</span>
+            <input style="width: 21%;" name="index_form" type="number" x-model="new_index" @click.stop>
+         </div>
       </div>
 
       <div class="section">
@@ -238,10 +258,12 @@
                   if (modo == 'addition') {
                      registros.push(get_shit(new_row));
                   } else {
-                     registros[old_row_index] = get_shit(new_row);
+                     registros[old_index] = get_shit(new_row);
+                     if (new_index != null && new_index != old_index)
+                        move_from(registros, old_index, new_index);
                   }
                   modo = 'main';
-                  for (let item in new_row) {new_row[item] = null;}
+                  for (let item in new_row) new_row[item] = null;
                   changed = true;
                "
             ></button>
