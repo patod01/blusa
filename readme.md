@@ -37,15 +37,15 @@ backlog:
           - [x] cargo;
           - [x] motivo;
           - [x] detalle.
-     - [ ] autocompletado para motivo, detalle y fuente.
+     - autocompletado para motivo, detalle y fuente.
 - [x] modo de eliminacion de registros.
      - [x] marcar registros a eliminar.
      - [x] boton para confirmar.
 - [x] boton para guardar datos localmente.
-- exportar informacion a csv.
-- importar csv.
+- [x] exportar informacion a ~~csv~~ txt.
+- [ ] importar csv.
 - [ ] PWA:
-     - [ ] pagina principal separada de la app.
+     - pagina principal separada de la app.
      - [x] prompt automatico para instalar PWA.
      - [x] estado para no volver a insistir en instalacion de PWA.
 - criptografia.

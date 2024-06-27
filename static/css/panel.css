@@ -1,9 +1,19 @@
 .arriba {
      position: fixed;
+     z-index: 2;
      top: 0vh;
      width: 100vw;
      height: 10vh;
      border-bottom: solid 1px;
+}
+
+#export-alert {
+     position: fixed;
+     left: 50vw;
+     top: 30vh;
+     width: 42vw;
+     translate: -50% -50%;
+     font-weight: bold;
 }
 
 .tabla {

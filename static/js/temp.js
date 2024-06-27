@@ -54,3 +54,15 @@ function getPWADisplayMode() {
 function move_from(registros, old_index, new_index) {
      registros.splice(new_index, 0, registros.splice(old_index,1)[0]);
 }
+
+async function exportar(registros, blow) {
+     const datos = new Blob(
+          [JSON.stringify(registros, null, blow)],
+          {type: "application/json"}
+     );
+     const archivo = document.createElement("a");
+     archivo.href = window.URL.createObjectURL(datos);
+     // archivo.target = '_blank';
+     archivo.download = `bolsa-db.txt`;
+     archivo.click();
+}

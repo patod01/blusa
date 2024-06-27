@@ -77,7 +77,7 @@
    x-show="!logged"
    x-transition
 >
-   <div>Bolsa - v0.2.1</div>
+   <div>Bolsa - v0.3.0</div>
 
    <label for="user">User:</label>
    <input id="user" type="text" x-model="usuario">
@@ -124,8 +124,25 @@
 
       <div style="margin: 3px; display: inline-block;">
          <button id="log-out" @click="$dispatch('logueando')">Log out</button>
-         <button id="import" disabled>Import</button>
-         <button id="export" disabled>Export</button>
+         <button id="import" disabled>import</button>
+ 
+         <div
+            style="display: inline-block;"
+            x-data="{exportando: false}"
+         >
+            <button id="export"
+               :disabled="exportando"
+               @click="
+                  exportar(registros, 0);
+                  exportando = true;
+                  setTimeout(() => exportando = false, 3666)
+               "
+            >Export</button>
+            <div id="export-alert" role="button" x-show="exportando" x-transition>
+               Datos exportados a TXT!
+            </div>
+         </div>
+ 
       </div>
 
       <div style="margin: 3px; display: inline-block; float: right;">

@@ -1,7 +1,7 @@
 .cabecera {
      position: fixed;
-     top: 10vh;
      z-index: 1;
+     top: 10vh;
      border-bottom: solid 2px black;
      scrollbar-width: none;
      span {
@@ -46,6 +46,7 @@
 
 #dogo {
      position: absolute;
+     z-index: 1;
      top: 50vh;
      left: 50vw;
      width: 80vw;
