@@ -25,6 +25,7 @@
 
    <link rel="manifest" href="manifest.json">
 
+   <script src="info.mjs"></script>
    <script src="static/js/test_data.js"></script>
    <script src="static/js/temp.js"></script>
    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -77,7 +78,10 @@
    x-show="!logged"
    x-transition
 >
-   <div>Bolsa - v0.3.0</div>
+   <div x-text="`${info.app_name} - v${info.app_ver}`"></div>
+   <div
+      x-init="commitAPI($el)"
+   ></div>
 
    <label for="user">User:</label>
    <input id="user" type="text" x-model="usuario">

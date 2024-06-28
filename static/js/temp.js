@@ -66,3 +66,22 @@ async function exportar(registros, blow) {
      archivo.download = `bolsa-db.txt`;
      archivo.click();
 }
+
+async function commitAPI(element) {
+     const owner = 'patod01';
+     const repo = 'blusa';
+     const branch = 'patriarch';
+     const commitVerSpan = document.querySelector('#latest-commit-ver');
+
+     fetch(`https://api.github.com/repos/${owner}/${repo}/commits/${branch}`)
+          .then(response => response.json())
+          .then(data => {
+               const latestCommit = data.commit;
+               const message = latestCommit.message;
+               const commitVer = message.substring(2, message.indexOf(' '));
+               element.innerHTML = `dev - v${commitVer}`
+          })
+          .catch(error => {
+               console.error('Error al obtener el commit más reciente:', error);
+          });
+}
