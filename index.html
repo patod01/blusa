@@ -128,8 +128,44 @@
 
       <div style="margin: 3px; display: inline-block;">
          <button id="log-out" @click="$dispatch('logueando')">Log out</button>
-         <button id="import" disabled>import</button>
- 
+
+         <div
+            style="display: inline-block;"
+            x-data="{import_file: false, append: false, import_error: false}"
+         >
+            <button id="import"
+               @click="import_file = true"
+            >import</button>
+
+            <div id="import-file" x-show="import_file">
+               <div>
+                  <button @click="import_file = false">close</button>
+                  <button
+                     @click="
+                        if (importData.files.length > 0) {
+                           if (!append) registros.splice(0, registros.length);
+                           registros.push( ...JSON.parse(await importData.files[0].text()) );
+                           changed = true;
+                        } else {
+                           console.error('sube la cosa antes');
+                           import_error = true;
+                           setTimeout(() => import_error = false, 1234);
+                        }
+                     "
+                  >update</button>
+               </div>
+
+               <div>
+                  <input type="file" id="importData" :class="{'import-error': import_error}">
+               </div>
+
+               <div>
+                  <span>append new data?</span>
+                  <input type="checkbox" name="append" role="switch" @click="append = !append">
+               </div>
+            </div>
+         </div>
+
          <div
             style="display: inline-block;"
             x-data="{exportando: false}"
@@ -146,7 +182,6 @@
                Datos exportados a TXT!
             </div>
          </div>
- 
       </div>
 
       <div style="margin: 3px; display: inline-block; float: right;">

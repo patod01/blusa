@@ -7,9 +7,7 @@ vite
 
 backlog:
 - login de usuario.
-     - log in.
-- log off.
-- seleccion de cuenta.
+- seleccion de cuenta de registros.
 - [x] listar transacciones.
      - [x] cambiar tama;o de la lista (columnas mostradas).
      - [x] editar al tocar el registro.
@@ -42,8 +40,8 @@ backlog:
      - [x] marcar registros a eliminar.
      - [x] boton para confirmar.
 - [x] boton para guardar datos localmente.
-- [x] exportar informacion a ~~csv~~ txt.
-- [ ] importar csv.
+- [x] exportar informacion a ~~csv~~ `json`.
+- [x] importar ~~csv~~ `json`.
 - [ ] PWA:
      - pagina principal separada de la app.
      - [x] prompt automatico para instalar PWA.
