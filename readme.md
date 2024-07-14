@@ -7,7 +7,7 @@ vite
 
 backlog:
 - login de usuario.
-- seleccion de cuenta de registros.
+- [ ] seleccion de cuenta de registros.
 - [x] listar transacciones.
      - [x] cambiar tama;o de la lista (columnas mostradas).
      - [x] editar al tocar el registro.
