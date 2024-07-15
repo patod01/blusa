@@ -1,5 +1,3 @@
-app inicialmente orientada a telefono.
-
 ```bash
 npm -i vite -g
 vite
@@ -7,7 +5,7 @@ vite
 
 backlog:
 - login de usuario.
-- [ ] seleccion de cuenta de registros.
+- seleccion de cuenta de registros.
 - [x] listar transacciones.
      - [x] cambiar tama;o de la lista (columnas mostradas).
      - [x] editar al tocar el registro.
@@ -21,12 +19,12 @@ backlog:
      - suma de numeros.
      - promedio de numeros.
      - recuento general.
-- resumen de totales.
+- [ ] resumen de totales.
      - filtro de fechas.
      - filtro de categorias (motivo, detalle, fuente).
-     - recuento de registros.
-     - suma de abonos y cargos.
-     - promedio de numeros.
+     - [x] recuento de registros.
+     - [x] suma de abonos y cargos.
+     - ~~promedio de numeros~~.
 - [ ] ingresar registro de transaccion.
      - ~~siguiente campo al pulsar enter.~~
      - [x] campos:

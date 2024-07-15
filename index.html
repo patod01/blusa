@@ -98,7 +98,12 @@
 <div id="main-body"
    x-data="{
       table_size: 5,
-      registros: JSON.parse(localStorage.getItem('data')),
+      registros: [],
+      recuento: 0,
+      suma_p: 0,
+      suma_n: 0,
+      suma_t: 0,
+      promedio: 0,
       modo: 'main',
       changed: false,
       new_row: {
@@ -111,6 +116,9 @@
       },
       old_index: null
    }"
+   x-init="$nextTick(() => {
+      registros = JSON.parse(localStorage.getItem('data'))
+   })"
    x-show="logged"
    x-cloak
    x-transition
@@ -332,10 +340,23 @@
 
    <!--! panel inferior -->
    <div class="abajo">
-      <div id="status-bar">
-         <div id="count" x-text="'count: x'"></div>
-         <div id="sum" x-text="'sum: x'"></div>
-         <div id="average" x-text="'average: x'"></div>
+      <div id="status-bar"
+         x-data="{switch_sum: false}"
+         x-init="$watch('registros', registros => {
+            recuento = registros.length;
+            suma_p = registros.reduce((cum, row) => row[1] + cum, 0);
+            suma_n = registros.reduce((cum, row) => row[2] + cum, 0);
+            suma_t = suma_p - suma_n;
+         })"
+         @click="switch_sum = !switch_sum"
+      >
+         <div x-text="`Registros: ${recuento}`"></div>
+
+         <div x-text="`Total: $${suma_t.toLocaleString('es-CL')}`" x-show="!switch_sum"></div>
+         <div x-text="`Abonos: $${suma_p.toLocaleString('es-CL')}`" x-show="switch_sum"></div>
+         <div x-text="`Cargos: $${suma_n.toLocaleString('es-CL')}`" x-show="switch_sum"></div>
+
+         <div x-text="`average: ${promedio}`" x-show="false"></div>
       </div>
 
 
