@@ -341,20 +341,20 @@
    <!--! panel inferior -->
    <div class="abajo">
       <div id="status-bar"
-         x-data="{switch_sum: false}"
+         x-data="{split_sum: true}"
          x-init="$watch('registros', registros => {
             recuento = registros.length;
             suma_p = registros.reduce((cum, row) => row[1] + cum, 0);
             suma_n = registros.reduce((cum, row) => row[2] + cum, 0);
             suma_t = suma_p - suma_n;
          })"
-         @click="switch_sum = !switch_sum"
+         @click="split_sum = !split_sum"
       >
          <div x-text="`Registros: ${recuento}`"></div>
 
-         <div x-text="`Total: $${suma_t.toLocaleString('es-CL')}`" x-show="!switch_sum"></div>
-         <div x-text="`Abonos: $${suma_p.toLocaleString('es-CL')}`" x-show="switch_sum"></div>
-         <div x-text="`Cargos: $${suma_n.toLocaleString('es-CL')}`" x-show="switch_sum"></div>
+         <div x-text="`Total: $${suma_t.toLocaleString('es-CL')}`" x-show="!split_sum"></div>
+         <div x-text="`Abonos: $${suma_p.toLocaleString('es-CL')}`" x-show="split_sum"></div>
+         <div x-text="`Cargos: $${suma_n.toLocaleString('es-CL')}`" x-show="split_sum"></div>
 
          <div x-text="`average: ${promedio}`" x-show="false"></div>
       </div>
