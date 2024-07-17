@@ -85,3 +85,24 @@ async function commitAPI(element) {
                console.error('Error al obtener el commit más reciente:', error);
           });
 }
+
+function extract_options(registros) {
+     let dataset = {};
+     let dataset_sources = new Set;
+
+     for (let fila of registros) {
+          if (fila[3] == '') continue;
+
+          dataset[fila[3]] ?? (() => dataset[fila[3]] = new Set())();
+          if (fila[4] != '') dataset[fila[3]].add(fila[4]);
+          if (fila[5] != '') dataset_sources.add(fila[5]);
+     }
+
+     for (let lista in dataset) {
+          dataset[lista] = Array(...dataset[lista]).sort();
+     }
+
+     return [dataset, Object.keys(dataset).sort(), Array(...dataset_sources).sort()];
+}
+
+let asdf;

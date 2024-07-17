@@ -3,7 +3,7 @@ npm -i vite -g
 vite
 ```
 
-backlog:
+### backlog:
 - login de usuario.
 - seleccion de cuenta de registros.
 - [x] listar transacciones.
@@ -19,13 +19,15 @@ backlog:
      - suma de numeros.
      - promedio de numeros.
      - recuento general.
-- [ ] resumen de totales.
-     - filtro de fechas.
-     - filtro de categorias (motivo, detalle, fuente).
+- [x] resumen de totales.
      - [x] recuento de registros.
      - [x] suma de abonos y cargos.
-     - ~~promedio de numeros~~.
-- [ ] ingresar registro de transaccion.
+     - ~~promedio de numeros.~~
+- filtros en encabezados.
+     - filtro de fechas.
+     - filtro de categorias (motivo, detalle, fuente).
+     - filtro de numeros (listado normal y mayor o menor que).
+- [x] ingresar registro de transaccion.
      - ~~siguiente campo al pulsar enter.~~
      - [x] campos:
           - [x] fecha;
@@ -33,7 +35,7 @@ backlog:
           - [x] cargo;
           - [x] motivo;
           - [x] detalle.
-     - autocompletado para motivo, detalle y fuente.
+     - [x] autocompletado para motivo, detalle y fuente.
 - [x] modo de eliminacion de registros.
      - [x] marcar registros a eliminar.
      - [x] boton para confirmar.

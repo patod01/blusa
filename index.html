@@ -104,6 +104,9 @@
       suma_n: 0,
       suma_t: 0,
       promedio: 0,
+      datalist: {},
+      datalist_h1: [],
+      datalist_sources: [],
       modo: 'main',
       changed: false,
       new_row: {
@@ -265,6 +268,9 @@
       x-show="modo == 'addition' || modo == 'edition'"
       x-transition
       x-data="{show_index_form: false, new_index: null}"
+      x-init="$watch('registros', registros => {
+         [datalist, datalist_h1, datalist_sources] = extract_options(registros);
+      })"
    >
       <div class="header"
          x-init="$watch('modo', valor => {
@@ -302,15 +308,33 @@
          </div>
 
          <div>
-            <span>Motivo:</span><input name="motivo" type="text" x-model="new_row['motivo']">
+            <span>Motivo:</span>
+            <input name="motivo" type="text" list="motivos" x-model="new_row['motivo']">
+            <datalist id="motivos">
+               <template x-for="opcion in datalist_h1">
+               <option :value="opcion"></option>
+               </template>
+            </datalist>
          </div>
 
          <div>
-            <span>Detalle:</span><input name="detalle" type="text" x-model="new_row['detalle']">
+            <span>Detalle:</span>
+            <input name="detalle" type="text" list="detalles" x-model="new_row['detalle']">
+            <datalist id="detalles">
+               <template x-for="opcion in datalist[new_row['motivo']]">
+               <option :value="opcion"></option>
+               </template>
+            </datalist>
          </div>
 
          <div>
-            <span>Fuente:</span><input name="fuente" type="text" x-model="new_row['fuente']">
+            <span>Fuente:</span>
+            <input name="fuente" type="text" list="fuentes" x-model="new_row['fuente']">
+            <datalist id="fuentes">
+               <template x-for="opcion in datalist_sources">
+               <option :value="opcion">
+               </template>
+            </datalist>
          </div>
       </div>
 
