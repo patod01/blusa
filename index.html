@@ -242,8 +242,8 @@
          >
             <span class="cell-1" x-text="id + 1"></span>
             <span class="cell-2" x-text="fila[0]"></span>
-            <span class="cell-3 positive" x-text="fila[1].toLocaleString('es-CL')"></span>
-            <span class="cell-4 negative" x-text="fila[2].toLocaleString('es-CL')"></span>
+            <span class="cell-3" :class="{'positive': fila[1] != 0}" x-text="(x => {if (x == 0) return '-'; else return x.toLocaleString('es-CL')})(fila[1])"></span>
+            <span class="cell-4" :class="{'negative': fila[2] != 0}" x-text="(x => {if (x == 0) return '-'; else return x.toLocaleString('es-CL')})(fila[2])"></span>
             <span class="cell-5" x-text="fila[3]? fila[3]: '-'" x-show="table_size >= 5"></span>
             <span class="cell-6" x-text="fila[4]? fila[4]: '-'" x-show="table_size >= 6"></span>
             <span class="cell-7" x-text="fila[5]? fila[5]: '-'" x-show="table_size >= 7"></span>

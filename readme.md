@@ -13,7 +13,7 @@ vite
      - [x] cambiar indice de fila.
           - [x] en modo 'edicion'.
           - [x] en modo 'agregar'.
-     - quitar ceros en columnas `Abono` y `Cargo`.
+     - [x] quitar ceros en columnas `Abono` y `Cargo`.
 - seleccion multiple de celdas.
      - identificacion de tipo de dato.
      - recuento de numeros.
