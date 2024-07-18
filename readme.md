@@ -4,7 +4,7 @@ vite
 ```
 
 ### backlog:
-- login de usuario.
+- ~~login de usuario.~~
 - seleccion de cuenta de registros.
 - [x] listar transacciones.
      - [x] cambiar tama;o de la lista (columnas mostradas).
@@ -48,7 +48,4 @@ vite
      - pagina principal separada de la app.
      - [x] prompt automatico para instalar PWA.
      - [x] estado para no volver a insistir en instalacion de PWA.
-- criptografia.
-
-### bugs:
-- nulls en autocompletado.
+- ~~criptografia.~~

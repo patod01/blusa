@@ -6,6 +6,9 @@ function get_shit({ fecha, abono, cargo, motivo, detalle, fuente }) {
      else fecha = fecha.split('-').reverse().join('-');
      if (abono == null) abono = 0;
      if (cargo == null) cargo = 0;
+     if (motivo == null) motivo = '';
+     if (detalle == null) detalle = '';
+     if (fuente == null) fuente = '';
      let new_log = [
           fecha,
           parseInt(abono),

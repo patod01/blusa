@@ -4,5 +4,5 @@ const info = {
   // python_ver: '',
   // sqlite_ver: '',
   author: 'patod01',
-  app_ver: '0.6.2'
+  app_ver: '0.6.3'
 }
