@@ -236,6 +236,7 @@
                      }
                      cell++;
                   }
+                  if (new_row.abono > 0) $dispatch('es-abono'); else $dispatch('es-cargo');
                }
             "
          >
@@ -296,7 +297,7 @@
             <span>Fecha:</span><input name="fecha" type="date" x-model="new_row['fecha']">
          </div>
 
-         <div x-data="{abono: true}">
+         <div x-data="{abono: true}" @es-abono.window="abono = true" @es-cargo.window="abono = false">
             <span
                @click="abono = !abono; new_row['abono'] = null; new_row['cargo'] = null"
                x-text="abono? 'Abono:': 'Cargo:'"

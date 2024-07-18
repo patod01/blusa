@@ -9,10 +9,11 @@ vite
 - [x] listar transacciones.
      - [x] cambiar tama;o de la lista (columnas mostradas).
      - [x] editar al tocar el registro.
-          - abrir con 'abono' o 'cargo' segun corresponda.
+          - [x] abrir con 'abono' o 'cargo' segun corresponda.
      - [x] cambiar indice de fila.
           - [x] en modo 'edicion'.
           - [x] en modo 'agregar'.
+     - quitar ceros en columnas `Abono` y `Cargo`.
 - seleccion multiple de celdas.
      - identificacion de tipo de dato.
      - recuento de numeros.
@@ -36,6 +37,7 @@ vite
           - [x] motivo;
           - [x] detalle.
      - [x] autocompletado para motivo, detalle y fuente.
+     - lista desplegable en autocompletado para celular.
 - [x] modo de eliminacion de registros.
      - [x] marcar registros a eliminar.
      - [x] boton para confirmar.
@@ -47,3 +49,6 @@ vite
      - [x] prompt automatico para instalar PWA.
      - [x] estado para no volver a insistir en instalacion de PWA.
 - criptografia.
+
+### bugs:
+- nulls en autocompletado.
