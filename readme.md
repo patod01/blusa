@@ -4,7 +4,6 @@ vite
 ```
 
 ### backlog:
-- ~~login de usuario.~~
 - seleccion de cuenta de registros.
 - [x] listar transacciones.
      - [x] cambiar tama;o de la lista (columnas mostradas).
@@ -23,13 +22,11 @@ vite
 - [x] resumen de totales.
      - [x] recuento de registros.
      - [x] suma de abonos y cargos.
-     - ~~promedio de numeros.~~
 - filtros en encabezados.
      - filtro de fechas.
      - filtro de categorias (motivo, detalle, fuente).
      - filtro de numeros (listado normal y mayor o menor que).
 - [x] ingresar registro de transaccion.
-     - ~~siguiente campo al pulsar enter.~~
      - [x] campos:
           - [x] fecha;
           - [x] abono;
@@ -38,14 +35,15 @@ vite
           - [x] detalle.
      - [x] autocompletado para motivo, detalle y fuente.
      - lista desplegable en autocompletado para celular.
+     - [x] que los nuevos registros sean cargos por defectos.
 - [x] modo de eliminacion de registros.
      - [x] marcar registros a eliminar.
      - [x] boton para confirmar.
 - [x] boton para guardar datos localmente.
-- [x] exportar informacion a ~~csv~~ `json`.
-- [x] importar ~~csv~~ `json`.
+- [x] exportar informacion a `json`.
+- [x] importar `json`.
 - [ ] PWA:
-     - pagina principal separada de la app.
+     - [ ] pagina principal separada de la app.
      - [x] prompt automatico para instalar PWA.
      - [x] estado para no volver a insistir en instalacion de PWA.
-- ~~criptografia.~~
+- imagen de docker.
