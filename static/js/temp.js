@@ -25,10 +25,6 @@ if (localStorage.getItem('install_app_alert') == null) {
      localStorage.setItem('install_app_alert', true);
 }
 
-if (localStorage.getItem('last_version') == null) {
-     localStorage.setItem('last_version', 'v0.1.0');
-}
-
 if (localStorage.getItem('data') == null) {
      localStorage.setItem('data', JSON.stringify([]));
 }
