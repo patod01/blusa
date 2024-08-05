@@ -3,7 +3,7 @@
      "short_name": "bolsa",
      "description": "una app para angeles",
      "display": "standalone",
-     "ddisplay_override": ["window-controls-overlay"],
+     "x_display_override": ["window-controls-overlay"],
      "orientation": "portrait",
      "icons": [
           {
@@ -20,5 +20,6 @@
      "background_color": "#AAAAAA",
      "theme_color": "#BBBBBB",
      "start_url": "/",
+     "scope": "/",
      "id": "/?pwa"
 }
