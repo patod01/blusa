@@ -1,5 +1,5 @@
 # This file is intended for using just in development.
-# Tip for running from `vite`, run the next command:
+# Tip for running from `vite`:
 # `vite app`
 # This file is just for python backend.
 
