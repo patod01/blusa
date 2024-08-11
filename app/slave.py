@@ -1,5 +1,5 @@
-import os, sys
-from bottle import error, route, run, static_file, template
+import sys
+from bottle import error, route, run, static_file#, template
 
 ### Default settings ###
 @error(404)
@@ -24,11 +24,11 @@ def hello():
      return static_file('index.html', root='.')
 
 if __name__ == '__main__':
+     if len(sys.argv) != 3: raise Exception('EXPLODE')
+     print(f'Running in mode {sys.argv[1]} on port {sys.argv[2]}...')
      if sys.argv[1] == 'dev':
-          print('Running on', sys.argv[1])
-          run(host='localhost', port=8080, debug=True, reloader=True)
+          run(host='0.0.0.0', port=int(sys.argv[2]), debug=True, reloader=True)
      if sys.argv[1] == 'FTW':
-          print('Running on', sys.argv[1])
-          run(host='0.0.0.0', port=int(os.getenv('PORT', 8080)))
+          run(host='0.0.0.0', port=int(sys.argv[2]))
 
 #ned
