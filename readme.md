@@ -43,7 +43,7 @@ vite
 - [x] exportar informacion a `json`.
 - [x] importar `json`.
 - [ ] PWA:
-     - pagina principal separada de la app.
+     - [ ] pagina principal separada de la app.
      - [x] prompt automatico para instalar PWA.
      - [x] estado para no volver a insistir en instalacion de PWA.
 - menu bar.
@@ -51,4 +51,4 @@ vite
      - export button.
      - app ver.
      - dev ver.
-- [ ] imagen de docker.
+- [x] ~~imagen de docker~~ docker file.

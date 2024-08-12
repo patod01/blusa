@@ -1,5 +1,5 @@
 import sys
-from bottle import error, route, run, static_file#, template
+from bugs.bottle import error, route, run, static_file#, template
 
 ### Default settings ###
 @error(404)

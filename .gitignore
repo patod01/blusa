@@ -2,5 +2,6 @@ __pycache__
 *.xlsx
 .venv
 .vite
+bugs
 commit.md
 pu.sh
