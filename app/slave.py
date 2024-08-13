@@ -20,8 +20,12 @@ def manifest():
 
 ### Real sh1t ###
 @route('/')
-def hello():
+def landing():
      return static_file('index.html', root='.')
+
+@route('/app')
+def bolsa():
+     return static_file('app.html', root='.')
 
 if __name__ == '__main__':
      if len(sys.argv) != 3: raise Exception('EXPLODE')

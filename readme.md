@@ -42,11 +42,11 @@ vite
 - [x] boton para guardar datos localmente.
 - [x] exportar informacion a `json`.
 - [x] importar `json`.
-- [ ] PWA:
-     - [ ] pagina principal separada de la app.
+- [x] PWA:
+     - [x] pagina principal separada de la app.
      - [x] prompt automatico para instalar PWA.
      - [x] estado para no volver a insistir en instalacion de PWA.
-- menu bar.
+- [ ] menu bar.
      - import button.
      - export button.
      - app ver.

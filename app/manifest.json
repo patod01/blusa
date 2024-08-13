@@ -19,7 +19,7 @@
      ],
      "background_color": "#AAAAAA",
      "theme_color": "#BBBBBB",
-     "start_url": "/",
-     "scope": "/",
+     "start_url": "/app",
+     "scope": "/app",
      "id": "/?pwa"
 }

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta
+      name="viewport"
+      content="width=device-width,
+      initial-scale=1,
+      user-scalable=no"
+   >
+   <link rel="icon" href="static/icon.png">
+   <title>Bolsa</title>
+
+   <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+   />
+
+   <!-- <link rel="stylesheet" href="static/css/login.css"> -->
+   <link rel="stylesheet" href="static/css/main.css">
+   <!-- <link rel="stylesheet" href="static/css/form.css"> -->
+   <link rel="stylesheet" href="static/css/panel.css">
+   <link rel="stylesheet" href="static/css/table.css">
+   <link rel="stylesheet" href="static/css/cells.css">
+
+   <link rel="manifest" href="manifest.json">
+
+   <script src="info.mjs"></script>
+   <script src="static/js/test_data.js"></script>
+   <script src="static/js/temp.js"></script>
+   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+
+<!--! main app view -->
+<main id="app"
+   x-data="{
+      usuario: '',
+      password: '',
+      logged: alvin.dev, // AAAAAAAAAAAA,
+      cuenta: '',
+      install_app_alert: localStorage.getItem('install_app_alert') == 'true',
+      revert_app_alert() {
+         localStorage.setItem('install_app_alert',
+            localStorage.getItem('install_app_alert') == 'false'
+         );
+         this.install_app_alert = localStorage.getItem('install_app_alert') == 'true';
+      }
+   }"
+   @logueando="logged = !logged"
+>
+
+<!--! banner personalizado para solicitar instalar app -->
+<dialog id="install_banner">
+   <div>
+      wanna install app?
+      <button id="install_app_alert" @click="revert_app_alert"
+         x-text="install_app_alert? 'i guess': 'please, no'"
+      >
+      </button>
+      <div x-show="!install_app_alert">
+         <div>refresh the page to use it the wrong way</div>
+      </div>
+      <div x-data="{a: false}" x-show="install_app_alert">
+         <div>go to options and install it. You can do it!</div>
+         <div style="text-align: center;">
+            <button @click="install_prompt.prompt(); a = true">install app!</button>
+         </div>
+         <div x-show="a">after installing it,</div>
+         <div x-show="a">you might need to do a manual refresh</div>
+      </div>
+      <button x-data="{ a: getPWADisplayMode }" x-text="a"></button>
+   </div>
+</dialog>
+
+<!--! formulario de inicio de sesion -->
+<div id="log-form"
+   x-show="!logged"
+   x-transition
+>
+   <div x-text="`${info.app_name} - v${info.app_ver}`"></div>
+   <div
+      x-init="commitAPI($el)"
+   ></div>
+
+   <label for="user">User:</label>
+   <input id="user" type="text" x-model="usuario">
+
+   <label for="pass">Pass:</label>
+   <input id="pass" type="password" x-model="password">
+
+   <button @click.prevent="$dispatch('logueando')">Login</button>
+</div>
+
+
+
+<!--! viewport de la app -->
+<div id="main-body"
+   x-data="{
+      table_size: 5,
+      registros: [],
+      recuento: 0,
+      suma_p: 0,
+      suma_n: 0,
+      suma_t: 0,
+      promedio: 0,
+      datalist: {},
+      datalist_h1: [],
+      datalist_sources: [],
+      modo: 'main',
+      changed: false,
+      new_row: {
+         fecha: null,
+         abono: null,
+         cargo: null,
+         motivo: null,
+         detalle: null,
+         fuente: null
+      },
+      old_index: null
+   }"
+   x-init="$nextTick(() => {
+      registros = JSON.parse(localStorage.getItem('data'))
+   })"
+   x-show="logged"
+   x-cloak
+   x-transition
+>
+
+   <!--! panel superior -->
+   <div class="arriba">
+      <div style="margin: 3px;">
+         <button id="cuenta" disabled>Cuenta</button>
+         <button x-data="{ a: getPWADisplayMode }"
+            x-text="a"
+            @click="revert_app_alert"
+         ></button>
+      </div>
+
+      <div style="margin: 3px; display: inline-block;">
+         <button id="log-out" @click="$dispatch('logueando')">Log out</button>
+
+         <div
+            style="display: inline-block;"
+            x-data="{import_file: false, append: false, import_error: false}"
+         >
+            <button id="import"
+               @click="import_file = true"
+            >import</button>
+
+            <div id="import-file" x-show="import_file">
+               <div>
+                  <button @click="import_file = false">close</button>
+                  <button
+                     @click="
+                        if (importData.files.length > 0) {
+                           if (!append) registros.splice(0, registros.length);
+                           registros.push( ...JSON.parse(await importData.files[0].text()) );
+                           changed = true;
+                        } else {
+                           console.error('sube la cosa antes');
+                           import_error = true;
+                           setTimeout(() => import_error = false, 1234);
+                        }
+                     "
+                  >update</button>
+               </div>
+
+               <div>
+                  <input type="file" accept=".txt" id="importData" :class="{'import-error': import_error}">
+               </div>
+
+               <div>
+                  <span>append new data?</span>
+                  <input type="checkbox" name="append" role="switch" @click="append = !append">
+               </div>
+            </div>
+         </div>
+
+         <div
+            x-data="{exportando: false}"
+            style="display: inline-block;"
+         >
+            <button id="export"
+               :disabled="exportando"
+               @click="
+                  exportar(registros, 0);
+                  exportando = true;
+                  setTimeout(() => exportando = false, 3666)
+               "
+            >Export</button>
+            <div id="export-alert" role="button" x-show="exportando" x-transition>
+               Datos exportados a TXT!
+            </div>
+         </div>
+      </div>
+
+      <div style="margin: 3px; display: inline-block; float: right;">
+         <button id="save"
+            style="padding-left: 3px; padding-right: 3px;"
+            @click="
+               localStorage.setItem('data', JSON.stringify(registros))
+               changed = false
+            "
+            :disabled="!changed"
+         >Save</button>
+      </div>
+   </div>
+
+
+
+   <!--! panel principal: tabla de registros -->
+   <div class="tabla" :class="'level-' + table_size">
+      <div class="cabecera">
+         <span class="cell-1">Ix</span>
+         <span class="cell-2">Fecha</span>
+         <span class="cell-3">Abono</span>
+         <span class="cell-4">Cargo</span>
+         <span class="cell-5" x-show="table_size >= 5">Motivo</span>
+         <span class="cell-6" x-show="table_size >= 6">Detalle</span>
+         <span class="cell-7" x-show="table_size >= 7">Fuente</span>
+      </div>
+      <div class="registros">
+         <template x-for="(fila, id) in registros">
+         <div :id="'row-' + (id + 1)"
+            @click="
+               if (modo == 'main') {
+                  modo = 'edition';
+                  old_index = parseInt($el.id.split('-')[1]) - 1;
+                  let cell = 0;
+                  for (let item in new_row) {
+                     if (item == 'fecha') {
+                        new_row[item] = registros[old_index][cell].split('-').reverse().join('-');
+                     } else {
+                        new_row[item] = registros[old_index][cell];
+                     }
+                     cell++;
+                  }
+                  if (new_row.abono > 0) $dispatch('es-abono'); else $dispatch('es-cargo');
+               }
+            "
+         >
+            <span class="cell-1" x-text="id + 1"></span>
+            <span class="cell-2" x-text="fila[0]"></span>
+            <span class="cell-3" :class="{'positive': fila[1] != 0}" x-text="(x => {if (x == 0) return '-'; else return x.toLocaleString('es-CL')})(fila[1])"></span>
+            <span class="cell-4" :class="{'negative': fila[2] != 0}" x-text="(x => {if (x == 0) return '-'; else return x.toLocaleString('es-CL')})(fila[2])"></span>
+            <span class="cell-5" x-text="fila[3]? fila[3]: '-'" x-show="table_size >= 5"></span>
+            <span class="cell-6" x-text="fila[4]? fila[4]: '-'" x-show="table_size >= 6"></span>
+            <span class="cell-7" x-text="fila[5]? fila[5]: '-'" x-show="table_size >= 7"></span>
+            <span class="del-cell" x-show="modo == 'borrar'">
+               <input
+                  :id="'del-' + (id + 1)"
+                  class="del-switch"
+                  type="checkbox"
+                  role="switch"
+                  @click="fila[6] = !fila[6]"
+                  @delete-switches-off.window="$el.checked = false"
+               >
+            </span>
+         </div>
+         </template>
+      </div>
+   </div>
+
+
+
+   <!--! formulario para agregar o editar registros -->
+   <article id="dogo"
+      x-data="{show_index_form: false, new_index: null}"
+      x-init="$watch('registros', registros => {
+         [datalist, datalist_h1, datalist_sources] = extract_options(registros);
+      })"
+      x-show="modo == 'addition' || modo == 'edition'"
+      x-transition
+   >
+      <div class="header"
+         x-init="$watch('modo', valor => {
+            if (valor == 'main') {show_index_form = false; new_index = null;}
+         })"
+         @click="new_index = old_index; show_index_form = !show_index_form;"
+      >
+         <b
+            x-text="
+               modo == 'addition'?
+                  'add new log':
+                  `edit log #${old_index + 1} ---${show_index_form? 'v': '>'}`
+            "
+         ></b>
+         <div x-show="show_index_form">
+            <span>Poner despues de la fila:</span>
+            <input style="width: 21%;" name="index_form" type="number" x-model="new_index" @click.stop>
+         </div>
+      </div>
+
+      <div class="section">
+         <div>
+            <span>Fecha:</span><input name="fecha" type="date" x-model="new_row['fecha']">
+         </div>
+
+         <div x-data="{abono: false}" @es-abono.window="abono = true" @es-cargo.window="abono = false">
+            <span
+               @click="abono = !abono; new_row['abono'] = null; new_row['cargo'] = null"
+               x-text="abono? 'Abono:': 'Cargo:'"
+               :style="{backgroundColor, color, fontWeight} = (() => {if (abono) return {backgroundColor: 'green', color: 'white'}; else return {backgroundColor: 'red', color: 'white', fontWeight: 'bold'}})()"
+            >
+            </span>
+            <input name="abono" type="number" x-show="abono" x-model="new_row['abono']">
+            <input name="cargo" type="number" x-show="!abono" x-model="new_row['cargo']">
+         </div>
+
+         <div>
+            <span>Motivo:</span>
+            <input name="motivo" type="text" list="motivos" x-model="new_row['motivo']">
+            <datalist id="motivos">
+               <template x-for="opcion in datalist_h1">
+               <option :value="opcion"></option>
+               </template>
+            </datalist>
+         </div>
+
+         <div>
+            <span>Detalle:</span>
+            <input name="detalle" type="text" list="detalles" x-model="new_row['detalle']">
+            <datalist id="detalles">
+               <template x-for="opcion in datalist[new_row['motivo']]">
+               <option :value="opcion"></option>
+               </template>
+            </datalist>
+         </div>
+
+         <div>
+            <span>Fuente:</span>
+            <input name="fuente" type="text" list="fuentes" x-model="new_row['fuente']">
+            <datalist id="fuentes">
+               <template x-for="opcion in datalist_sources">
+               <option :value="opcion">
+               </template>
+            </datalist>
+         </div>
+      </div>
+
+      <div class="footer">
+            <button @click="modo = 'main'">cancelar</button>
+            <button
+               x-text="modo == 'addition'? 'registrar': 'confirmar'"
+               @click="
+                  if (modo == 'addition') {
+                     registros.push(get_shit(new_row));
+                     if (new_index != null)
+                        move_from(registros, registros.length - 1, new_index);
+                  } else {
+                     registros[old_index] = get_shit(new_row);
+                     if (new_index != null && new_index != old_index)
+                        move_from(registros, old_index, new_index);
+                  }
+                  modo = 'main';
+                  for (let item in new_row) new_row[item] = null;
+                  changed = true;
+               "
+            ></button>
+      </div>
+   </article>
+
+
+
+   <!--! panel inferior -->
+   <div class="abajo">
+      <div id="status-bar"
+         x-data="{split_sum: true}"
+         x-init="$watch('registros', registros => {
+            recuento = registros.length;
+            suma_p = registros.reduce((cum, row) => row[1] + cum, 0);
+            suma_n = registros.reduce((cum, row) => row[2] + cum, 0);
+            suma_t = suma_p - suma_n;
+         })"
+         @click="split_sum = !split_sum"
+      >
+         <div x-text="`Registros: ${recuento}`"></div>
+
+         <div x-text="`Total: $${suma_t.toLocaleString('es-CL')}`" x-show="!split_sum"></div>
+         <div x-text="`Abonos: $${suma_p.toLocaleString('es-CL')}`" x-show="split_sum"></div>
+         <div x-text="`Cargos: $${suma_n.toLocaleString('es-CL')}`" x-show="split_sum"></div>
+
+         <div x-text="`average: ${promedio}`" x-show="false"></div>
+      </div>
+
+
+
+      <!--! botones de accion -->
+      <div id="actions" :class="modo == 'borrar'? 'borrando': ''">
+         <button id="del-button"
+            :disabled="modo == 'addition'"
+            @click="
+               if (modo == 'main')
+                  modo = 'borrar';
+               else {
+                  $dispatch('delete-switches-off');
+                  const old_registros_len = registros.length
+                  registros = registros.filter((fila) => !fila[6]);
+                  if (old_registros_len != registros.length)
+                     changed = true;
+                  modo = 'main';
+               }
+            "
+            x-text="modo == 'borrar'? `Confirmar eliminacion (${
+               registros.reduce((cum, fila) => fila[6]? cum + 1: cum, 0)
+            })`: 'Delete Mode'"
+         >
+            Delete Mode
+         </button>
+
+
+
+         <button id="new-rec-button" x-show="modo != 'borrar'"
+            :disabled="modo == 'addition'"
+            @click="if (modo == 'main') modo = 'addition'"
+         >
+            New Record
+         </button>
+
+
+
+         <button id="detail-level-button"
+            @click="if (table_size >= 7) table_size = 5; else table_size++;a = registros;"
+         ><!-- elimiminar `a` en el futuro -->
+            Detail Level
+         </button>
+      </div>
+   </div>
+
+</div>
+
+</main>
+
+</body>
+</html>
