@@ -7,6 +7,7 @@ if [[ $1 = "i" ]]; then
      source .venv/bin/activate
      pip install --upgrade pip
      pip install bottle
+     deactivate
      echo Dependencies installed
      echo Creating bugs folder
      mkdir app/bugs

@@ -51,4 +51,4 @@ vite
      - export button.
      - app ver.
      - dev ver.
-- [x] ~~imagen de docker~~ docker file.
+- [x] docker file.
