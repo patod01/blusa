@@ -17,6 +17,7 @@
    />
 
    <!-- <link rel="stylesheet" href="static/css/login.css"> -->
+   <link rel="stylesheet" href="static/css/burger.css">
    <link rel="stylesheet" href="static/css/main.css">
    <!-- <link rel="stylesheet" href="static/css/form.css"> -->
    <link rel="stylesheet" href="static/css/panel.css">
@@ -45,7 +46,8 @@
             localStorage.getItem('install_app_alert') == 'false'
          );
          this.install_app_alert = localStorage.getItem('install_app_alert') == 'true';
-      }
+      },
+      open_menu: false
    }"
    @logueando="logged = !logged"
 >
@@ -90,6 +92,25 @@
    <input id="pass" type="password" x-model="password">
 
    <button @click.prevent="$dispatch('logueando')">Login</button>
+</div>
+
+
+
+<!--! burger de la app -->
+<div id="burger"
+   x-data="{show_dev: false}"
+   :class="{'open': open_menu}"
+   @click.self="open_menu = false"
+>
+   <hr>
+   <div>
+      <h1>Bolsa</h1>
+      <button @click="show_dev = !show_dev" x-text="`app - v${info.app_ver}`"></button>
+      <button>import button</button>
+      <button>export button</button>
+      <button x-init="commitAPI($el)" @click x-show="show_dev" x-transition></button>
+   </div>
+   <hr>
 </div>
 
 
@@ -193,6 +214,7 @@
                Datos exportados a TXT!
             </div>
          </div>
+         <button @click="open_menu = true">|||</button>
       </div>
 
       <div style="margin: 3px; display: inline-block; float: right;">

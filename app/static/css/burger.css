@@ -1,0 +1,32 @@
+#burger {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     position: fixed;
+     z-index: 3;
+     top: 0vh;
+
+     left: -66vw;
+     transition-duration: 0.19s;
+
+     height: 100vh;
+     width: 66vw;
+     background-color: rgba(0, 100, 0, 0.89);
+     h1 {
+          color: wheat;
+          align-content: center;
+          text-align: center;
+          text-decoration: underline;
+     }
+     button {
+          font-size: 27px;
+          width: 96%;
+          margin: 2%;
+          height: 11vh;
+          border-radius: 7px;
+     }
+     &.open {
+          left: 0vw;
+          box-shadow: -17px 0px 42px 25px;
+     }
+}

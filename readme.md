@@ -49,6 +49,6 @@ vite
 - [ ] menu bar.
      - import button.
      - export button.
-     - app ver.
-     - dev ver.
+     - [x] app ver.
+     - [x] dev ver.
 - [x] docker file.
