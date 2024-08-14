@@ -32,36 +32,43 @@ onbeforeinstallprompt = (event) => {
    #banner {
       position: fixed;
       left: 50vw;
-      top: 27vh;
+      top: 50vh;
       width: 69vw;
-      translate: -50% -0%;
+      translate: -50% -50%;
    }
 </style>
 
 <div id="banner">
 
-<h1><img src="static/icon.png" width="32px"> <span>- Bolsa</span></h1>
+<div style="text-align: center;">
+   <img src="static/icon.png" width="128px">
+   <br><br>
+   <h1>Bolsa</h1>
+</div>
+<!-- <br> -->
 
-<p>Uso de la app:</p>
-<ul>
-   <li>
-      Instalar PWA (app) desde el menu del navegador o haciendo click
-      en el boton de abajo.
-   </li>
-   <li>
-      Si se instala desde el computador y se abre una nueva ventana,
-      cerrarla y volverla a abrir buscando la app (Bolsa) ya
-      instalada en el equipo. Tambien se puede hacer click en la
-      <code>x</code> de la esquina superior izquierda.
-   </li>
-   <li>
-      Tener en cuenta que el boton de abajo no funcionara si la app
-      ya se encuentra instalada.
-   </li>
-</ul>
+<div>
+   <p>Uso de la app:</p>
+   <ul style="text-align: justify;">
+      <li>
+         Instalar PWA (app) desde el menu del navegador o haciendo click
+         en el boton de abajo.
+      </li>
+      <li>
+         Si se instala desde el computador y se abre una nueva ventana,
+         cerrarla y volverla a abrir buscando la app (Bolsa) ya
+         instalada en el equipo. Tambien se puede hacer click en la
+         <code>x</code> de la esquina superior izquierda.
+      </li>
+      <li>
+         <b>Tener en cuenta:</b> el boton de abajo no funcionara si la app
+         ya se encuentra instalada.
+      </li>
+   </ul>
 
-<div style="float: right;">
-   <button onclick="install_prompt.prompt()">install app!</button>
+   <div style="float: right;">
+      <button onclick="install_prompt.prompt()">instalar app!</button>
+   </div>
 </div>
 
 </div>
