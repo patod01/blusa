@@ -38,7 +38,9 @@
    x-data="{
       usuario: '',
       password: '',
+      registros: [],
       logged: alvin.dev, // AAAAAAAAAAAA,
+      changed: false,
       cuenta: '',
       install_app_alert: localStorage.getItem('install_app_alert') == 'true',
       revert_app_alert() {
@@ -47,6 +49,7 @@
          );
          this.install_app_alert = localStorage.getItem('install_app_alert') == 'true';
       },
+      import_file: false, append: false, import_error: false,
       open_menu: false
    }"
    @logueando="logged = !logged"
@@ -106,13 +109,17 @@
    <div>
       <h1>Bolsa</h1>
       <button @click="show_dev = !show_dev" x-text="`app - v${info.app_ver}`"></button>
-      <button>import button</button>
+
+      <button @click="import_file = true; open_menu = false">import</button>
+
       <button>export button</button>
+
       <button x-init="commitAPI($el)"
          @click="show_test = !show_test"
          x-show="show_dev"
          x-transition
       ></button>
+
       <button x-data="{ a: getPWADisplayMode }"
          @click="revert_app_alert"
          x-show="show_test"
@@ -125,11 +132,41 @@
 
 
 
+<!--! import menu -->
+<div id="import-file" x-show="import_file" x-transition>
+   <div>
+      <button @click="import_file = false">close</button>
+      <button
+         @click="
+            if (importData.files.length > 0) {
+               if (!append) registros.splice(0, registros.length);
+               registros.push( ...JSON.parse(await importData.files[0].text()) );
+               changed = true;
+            } else {
+               console.error('sube la cosa antes');
+               import_error = true;
+               setTimeout(() => import_error = false, 1234);
+            }
+         "
+      >update</button>
+   </div>
+
+   <div>
+      <input type="file" accept=".txt" id="importData" :class="{'import-error': import_error}">
+   </div>
+
+   <div>
+      <span>append new data?</span>
+      <input type="checkbox" name="append" role="switch" @click="append = !append">
+   </div>
+</div>
+
+
+
 <!--! viewport de la app -->
 <div id="main-body"
    x-data="{
       table_size: 5,
-      registros: [],
       recuento: 0,
       suma_p: 0,
       suma_n: 0,
@@ -139,7 +176,6 @@
       datalist_h1: [],
       datalist_sources: [],
       modo: 'main',
-      changed: false,
       new_row: {
          fecha: null,
          abono: null,
@@ -179,33 +215,6 @@
                @click="import_file = true"
             >import</button>
 
-            <div id="import-file" x-show="import_file">
-               <div>
-                  <button @click="import_file = false">close</button>
-                  <button
-                     @click="
-                        if (importData.files.length > 0) {
-                           if (!append) registros.splice(0, registros.length);
-                           registros.push( ...JSON.parse(await importData.files[0].text()) );
-                           changed = true;
-                        } else {
-                           console.error('sube la cosa antes');
-                           import_error = true;
-                           setTimeout(() => import_error = false, 1234);
-                        }
-                     "
-                  >update</button>
-               </div>
-
-               <div>
-                  <input type="file" accept=".txt" id="importData" :class="{'import-error': import_error}">
-               </div>
-
-               <div>
-                  <span>append new data?</span>
-                  <input type="checkbox" name="append" role="switch" @click="append = !append">
-               </div>
-            </div>
          </div>
 
          <div

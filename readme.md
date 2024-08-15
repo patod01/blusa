@@ -47,8 +47,8 @@ vite
      - [x] prompt automatico para instalar PWA.
      - [x] estado para no volver a insistir en instalacion de PWA.
 - [ ] menu bar.
-     - import button.
-     - export button.
+     - [x] import button.
+     - [ ] export button.
      - [x] app ver.
      - [x] dev ver.
 - [x] docker file.
