@@ -1,8 +1,12 @@
-# This file is intended for using just in development.
-# Tip for running from `vite` from project's root folder:
-# `vite app`
-# This file is just for python backend.
+# Run it from project's root folder.
 
-cd app
-python slave.py dev 8080
-cd ..
+if [[ $1 = "v" ]]; then
+     vite app
+elif [[ $1 = "h" ]]; then
+     echo Use from project\'s root folder:
+     printf "  srv.sh [h\|v\|MODE] [PORT]\n"
+else
+     cd app
+     python slave.py ${1:-dev} ${2:-8080}
+     cd ..
+fi

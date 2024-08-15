@@ -1,7 +1,30 @@
+Bolsa lleva una hoja de calculo en su minima expresion a una app para
+llevar el registro de tus transacciones. Nada mas.
+
+Opciones para correr la app (desde la ruta raiz del proyecto):
+
 ```bash
-npm -i vite -g
-vite
+# Run with vite backend
+tools/srv.sh v
+# or `vite app`
 ```
+
+```bash
+# Run with python backend
+tools/srv.sh
+```
+
+```bash
+# Run a container with an optional parameter as command for it
+tools/duck.sh # duck.sh [COMMAND]
+```
+
+```bash
+# Build docker image
+docker build -t bolsa . -f tools/Dockerfile
+```
+
+Con python backend:
 
 ### backlog:
 - seleccion de cuenta de registros.
