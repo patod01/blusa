@@ -98,7 +98,7 @@
 
 <!--! burger de la app -->
 <div id="burger"
-   x-data="{show_dev: false}"
+   x-data="{show_dev: false, show_test: false}"
    :class="{'open': open_menu}"
    @click.self="open_menu = false"
 >
@@ -108,7 +108,17 @@
       <button @click="show_dev = !show_dev" x-text="`app - v${info.app_ver}`"></button>
       <button>import button</button>
       <button>export button</button>
-      <button x-init="commitAPI($el)" @click x-show="show_dev" x-transition></button>
+      <button x-init="commitAPI($el)"
+         @click="show_test = !show_test"
+         x-show="show_dev"
+         x-transition
+      ></button>
+      <button x-data="{ a: getPWADisplayMode }"
+         @click="revert_app_alert"
+         x-show="show_test"
+         x-text="a"
+         x-transition
+      ></button>
    </div>
    <hr>
 </div>
