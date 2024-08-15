@@ -110,9 +110,27 @@
       <h1>Bolsa</h1>
       <button @click="show_dev = !show_dev" x-text="`app - v${info.app_ver}`"></button>
 
-      <button @click="import_file = true; open_menu = false">import</button>
+      <button @click="import_file = true; open_menu = false">Import</button>
 
-      <button>export button</button>
+      <div x-data="{exportando: false}">
+         <button id="export"
+            :disabled="exportando"
+            @click="
+               exportar(registros, 0);
+               exportando = true;
+               setTimeout(() => exportando = false, 3666);
+               open_menu = false
+            "
+         >Export</button>
+         <div id="export-alert"
+            role="button"
+            x-show="exportando"
+            x-transition
+            style="border: thick solid black;"
+         >
+            Datos exportados a TXT!
+         </div>
+      </div>
 
       <button x-init="commitAPI($el)"
          @click="show_test = !show_test"

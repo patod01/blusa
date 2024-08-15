@@ -46,9 +46,10 @@ vite
      - [x] pagina principal separada de la app.
      - [x] prompt automatico para instalar PWA.
      - [x] estado para no volver a insistir en instalacion de PWA.
-- [ ] menu bar.
+- [x] menu bar.
      - [x] import button.
-     - [ ] export button.
+     - [x] export button.
      - [x] app ver.
      - [x] dev ver.
 - [x] docker file.
+- service worker (modo offline)
