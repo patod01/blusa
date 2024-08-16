@@ -19,11 +19,11 @@ if "%1"=="v" (
      goto :install
 ) else if "%mode%"=="" (
      cd app
-     .venv\Scripts\python.exe slave.py dev 8080
+     ..\.venv\Scripts\python.exe slave.py dev 8080
      cd ..
 ) else (
      cd app
-     .venv\Scripts\python.exe slave.py %mode% %port%
+     ..\.venv\Scripts\python.exe slave.py %mode% %port%
      cd ..
 )
 
