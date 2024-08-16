@@ -1,6 +1,7 @@
 #! /bin/bash
 
 # Run this file from project's root folder!
+# `source` command needed.
 
 if [[ $1 = "i" ]]; then
      python -m venv .venv

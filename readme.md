@@ -24,8 +24,6 @@ tools/duck.sh # duck.sh [COMMAND]
 docker build -t bolsa . -f tools/Dockerfile
 ```
 
-Con python backend:
-
 ### backlog:
 - seleccion de cuenta de registros.
 - [x] listar transacciones.

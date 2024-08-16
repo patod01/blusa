@@ -1,4 +1,3 @@
-let a; // test var to watch `registros``
 let install_prompt;
 
 function get_shit({ fecha, abono, cargo, motivo, detalle, fuente }) {
@@ -43,7 +42,7 @@ window.addEventListener('appinstalled', () => {
 function getPWADisplayMode() {
      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
      if (document.referrer.startsWith('android-app://')) {
-          return 'twa';
+          return 'TWA';
      } else if (navigator.standalone || isStandalone) {
           return 'standalone';
      }
@@ -103,5 +102,3 @@ function extract_options(registros) {
 
      return [dataset, Object.keys(dataset).sort(), Array(...dataset_sources).sort()];
 }
-
-let asdf;

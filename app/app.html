@@ -16,10 +16,8 @@
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
    />
 
-   <!-- <link rel="stylesheet" href="static/css/login.css"> -->
    <link rel="stylesheet" href="static/css/burger.css">
    <link rel="stylesheet" href="static/css/main.css">
-   <!-- <link rel="stylesheet" href="static/css/form.css"> -->
    <link rel="stylesheet" href="static/css/panel.css">
    <link rel="stylesheet" href="static/css/table.css">
    <link rel="stylesheet" href="static/css/cells.css">
@@ -33,7 +31,7 @@
 </head>
 <body>
 
-<!--! main app view -->
+<!--! main app container -->
 <main id="app"
    x-data="{
       usuario: '',
@@ -49,7 +47,7 @@
          );
          this.install_app_alert = localStorage.getItem('install_app_alert') == 'true';
       },
-      import_file: false, append: false, import_error: false,
+      import_file: false, append: false, import_error: false, // encapsular algun dia
       open_menu: false
    }"
    @logueando="logged = !logged"
@@ -78,7 +76,9 @@
    </div>
 </dialog>
 
-<!--! formulario de inicio de sesion -->
+
+
+<!--! formulario de inicio de sesion: MATAR -->
 <div id="log-form"
    x-show="!logged"
    x-transition
@@ -184,13 +184,13 @@
 <!--! viewport de la app -->
 <div id="main-body"
    x-data="{
-      table_size: 5,
+      table_size: 5, // number of columns shown
       recuento: 0,
       suma_p: 0,
       suma_n: 0,
       suma_t: 0,
       promedio: 0,
-      datalist: {},
+      datalist: {}, // encapsular datalists cosas algun dia
       datalist_h1: [],
       datalist_sources: [],
       modo: 'main',
@@ -212,7 +212,7 @@
    x-transition
 >
 
-   <!--! panel superior -->
+   <!--! panel superior: MATAR botones viejos -->
    <div class="arriba">
       <div style="margin: 3px;">
          <button id="cuenta" disabled>Cuenta</button>
@@ -251,7 +251,7 @@
                Datos exportados a TXT!
             </div>
          </div>
-         <button @click="open_menu = true">|||</button>
+         <button @click="open_menu = true">menu</button>
       </div>
 
       <div style="margin: 3px; display: inline-block; float: right;">
@@ -440,7 +440,7 @@
          <div x-text="`Abonos: $${suma_p.toLocaleString('es-CL')}`" x-show="split_sum"></div>
          <div x-text="`Cargos: $${suma_n.toLocaleString('es-CL')}`" x-show="split_sum"></div>
 
-         <div x-text="`average: ${promedio}`" x-show="false"></div>
+         <!-- MATAR --><div x-text="`average: ${promedio}`" x-show="false"></div>
       </div>
 
 
@@ -480,8 +480,8 @@
 
 
          <button id="detail-level-button"
-            @click="if (table_size >= 7) table_size = 5; else table_size++;a = registros;"
-         ><!-- elimiminar `a` en el futuro -->
+            @click="if (table_size >= 7) table_size = 5; else table_size++"
+         >
             Detail Level
          </button>
       </div>
