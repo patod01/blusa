@@ -11,21 +11,20 @@ set port=%mode:~3%
 set mode=%mode:~0,3%
 
 if "%1"=="v" (
-     echo vite app
+     vite app
 ) else if "%1"=="h" (
      echo Use from project\'s root folder:
      echo   srv.sh [h^|i^|v^|MODE] [PORT]
 ) else if "%1"=="i" (
      goto :install
 ) else if "%mode%"=="" (
-     echo cd app
-     echo python slave.py dev 8080
-     echo .venv\Scripts\python.exe slave.py dev 8080
-     echo cd ..
+     cd app
+     .venv\Scripts\python.exe slave.py dev 8080
+     cd ..
 ) else (
-     echo cd app
-     echo .venv\Scripts\python.exe slave.py %mode% %port%
-     echo cd ..
+     cd app
+     .venv\Scripts\python.exe slave.py %mode% %port%
+     cd ..
 )
 
 goto ned
