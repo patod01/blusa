@@ -29,7 +29,7 @@ def bolsa():
 
 if __name__ == '__main__':
      if len(sys.argv) != 3: raise Exception('EXPLODE')
-     print(f'Running in mode {sys.argv[1]} on port {sys.argv[2]}...')
+     print(f'Running in {sys.argv[1]} mode on port {sys.argv[2]}...')
      if sys.argv[1] == 'dev':
           run(host='0.0.0.0', port=int(sys.argv[2]), debug=True, reloader=True)
      if sys.argv[1] == 'FTW':
