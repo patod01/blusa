@@ -31,6 +31,7 @@ if "%1"=="v" (
 goto ned
 
 :install
+endlocal
 :: configuracion de entorno virtual
 if not exist .venv\Scripts\python.exe (
      echo Installanding Piton...
@@ -38,8 +39,9 @@ if not exist .venv\Scripts\python.exe (
      .venv\Scripts\activate.bat
      python -m pip install --upgrade pip
      pip install --no-cache-dir -r req.txt
+     deactivate
      mkdir app\bugs
-     copy .venv\Lib\site-packages\bottle* app\bugs
+     xcopy .venv\Lib\site-packages\bottle* app\bugs /s/i/c/k
      echo.
      echo escrit de instalacion terminado!!
      pause>nul
