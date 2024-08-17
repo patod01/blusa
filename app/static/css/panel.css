@@ -5,6 +5,13 @@
      width: 100vw;
      height: 10vh;
      border-bottom: solid 1px;
+     #save.unsaved {
+          background-color: red;
+          border-color: darkred;
+          height: 33px;
+          width: 42px;
+          font-weight: bold;
+     }
 }
 
 #import-file {

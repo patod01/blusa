@@ -125,8 +125,9 @@
          <div id="export-alert"
             role="button"
             x-show="exportando"
-            x-transition
             style="border: thick solid black;"
+            x-cloak
+            x-transition
          >
             Datos exportados a TXT!
          </div>
@@ -151,7 +152,7 @@
 
 
 <!--! import menu -->
-<div id="import-file" x-show="import_file" x-transition>
+<div id="import-file" x-show="import_file" x-cloak x-transition>
    <div>
       <button @click="import_file = false">close</button>
       <button
@@ -261,6 +262,7 @@
                localStorage.setItem('data', JSON.stringify(registros))
                changed = false
             "
+            :class="{'unsaved': changed}"
             :disabled="!changed"
          >Save</button>
       </div>
