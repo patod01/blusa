@@ -34,10 +34,7 @@
 <!--! main app container -->
 <main id="app"
    x-data="{
-      usuario: '',
-      password: '',
       registros: [],
-      logged: alvin.dev, // AAAAAAAAAAAA,
       changed: false,
       cuenta: '',
       install_app_alert: localStorage.getItem('install_app_alert') == 'true',
@@ -50,7 +47,6 @@
       import_file: false, append: false, import_error: false, // encapsular algun dia
       open_menu: false
    }"
-   @logueando="logged = !logged"
 >
 
 <!--! banner personalizado para solicitar instalar app -->
@@ -75,27 +71,6 @@
       <button x-data="{ a: getPWADisplayMode }" x-text="a"></button>
    </div>
 </dialog>
-
-
-
-<!--! formulario de inicio de sesion: MATAR -->
-<div id="log-form"
-   x-show="!logged"
-   x-transition
->
-   <div x-text="`${info.app_name} - v${info.app_ver}`"></div>
-   <div
-      x-init="commitAPI($el)"
-   ></div>
-
-   <label for="user">User:</label>
-   <input id="user" type="text" x-model="usuario">
-
-   <label for="pass">Pass:</label>
-   <input id="pass" type="password" x-model="password">
-
-   <button @click.prevent="$dispatch('logueando')">Login</button>
-</div>
 
 
 
@@ -208,7 +183,6 @@
    x-init="$nextTick(() => {
       registros = JSON.parse(localStorage.getItem('data'))
    })"
-   x-show="logged"
    x-cloak
    x-transition
 >
@@ -224,7 +198,7 @@
       </div>
 
       <div style="margin: 3px; display: inline-block;">
-         <button id="log-out" @click="$dispatch('logueando')">Log out</button>
+         <button id="log-out">Log out</button>
 
          <div
             style="display: inline-block;"
