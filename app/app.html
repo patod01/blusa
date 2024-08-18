@@ -165,7 +165,6 @@
       suma_p: 0,
       suma_n: 0,
       suma_t: 0,
-      promedio: 0,
       datalist: {}, // encapsular datalists cosas algun dia
       datalist_h1: [],
       datalist_sources: [],
@@ -384,8 +383,6 @@
          <div x-text="`Total: $${suma_t.toLocaleString('es-CL')}`" x-show="!split_sum"></div>
          <div x-text="`Abonos: $${suma_p.toLocaleString('es-CL')}`" x-show="split_sum"></div>
          <div x-text="`Cargos: $${suma_n.toLocaleString('es-CL')}`" x-show="split_sum"></div>
-
-         <!-- MATAR --><div x-text="`average: ${promedio}`" x-show="false"></div>
       </div>
 
 
