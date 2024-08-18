@@ -50,6 +50,7 @@
      width: 42vw;
      translate: -50% -50%;
      font-weight: bold;
+     border: thick solid black;
 }
 
 .tabla {
