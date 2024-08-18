@@ -187,45 +187,14 @@
    x-transition
 >
 
-   <!--! panel superior: MATAR botones viejos -->
+   <!--! panel superior -->
    <div class="arriba">
       <div style="margin: 3px;">
          <button id="cuenta" disabled>Cuenta</button>
-         <button x-data="{ a: getPWADisplayMode }"
-            x-text="a"
-            @click="revert_app_alert"
-         ></button>
       </div>
 
       <div style="margin: 3px; display: inline-block;">
-         <button id="log-out">Log out</button>
 
-         <div
-            style="display: inline-block;"
-            x-data="{import_file: false, append: false, import_error: false}"
-         >
-            <button id="import"
-               @click="import_file = true"
-            >import</button>
-
-         </div>
-
-         <div
-            x-data="{exportando: false}"
-            style="display: inline-block;"
-         >
-            <button id="export"
-               :disabled="exportando"
-               @click="
-                  exportar(registros, 0);
-                  exportando = true;
-                  setTimeout(() => exportando = false, 3666)
-               "
-            >Export</button>
-            <div id="export-alert" role="button" x-show="exportando" x-transition>
-               Datos exportados a TXT!
-            </div>
-         </div>
          <button @click="open_menu = true">menu</button>
       </div>
 
