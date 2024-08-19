@@ -21,55 +21,52 @@
 <body>
 
 <script>
-let install_prompt;
+   let install_prompt;
 
-onbeforeinstallprompt = (event) => {
-   install_prompt = event;
-}
+   onbeforeinstallprompt = (event) => {
+      install_prompt = event;
+   }
 </script>
 
 <style>
    #banner {
-      position: fixed;
-      left: 50vw;
-      top: 50vh;
+      height: 100vh;
       width: 69vw;
-      translate: -50% -50%;
+      align-content: center;
+      margin: 0% auto 0% auto;
    }
 </style>
 
 <div id="banner">
-
-<div style="text-align: center;">
-   <img src="static/icon.png" width="128px">
-   <br><br>
-   <h1>Bolsa</h1>
-</div>
-
-<div>
-   <p>Uso de la app:</p>
-   <ul style="text-align: justify;">
-      <li>
-         Instalar PWA (app) desde el menu del navegador o haciendo click
-         en el boton de abajo.
-      </li>
-      <li>
-         Si se instala desde el computador y se abre una nueva ventana,
-         cerrarla y volverla a abrir buscando la app (Bolsa) ya
-         instalada en el equipo. Tambien se puede hacer click en la
-         <code>x</code> de la esquina superior izquierda.
-      </li>
-      <li>
-         <b>Tener en cuenta:</b> el boton de abajo no funcionara si la app
-         ya se encuentra instalada.
-      </li>
-   </ul>
-
-   <div style="float: right;">
-      <button onclick="install_prompt.prompt()">instalar app!</button>
+   <div style="text-align: center;">
+      <img src="static/icon.png" width="128px">
+      <br><br>
+      <h1>Bolsa</h1>
    </div>
-</div>
 
+   <div>
+      <p>Uso de la app:</p>
+      <ul style="text-align: justify;">
+         <li>
+            Instalar PWA (app) desde el menu del navegador o haciendo click
+            en el boton de abajo.
+         </li>
+         <li>
+            Si se instala desde el computador y se abre una nueva ventana,
+            cerrarla y volverla a abrir buscando la app (Bolsa) ya
+            instalada en el equipo. Tambien se puede hacer click en la
+            <code>x</code> de la esquina superior izquierda.
+         </li>
+         <li>
+            <b>Tener en cuenta:</b> el boton de abajo no funcionara si la app
+            ya se encuentra instalada.
+         </li>
+      </ul>
+
+      <div style="float: right;">
+         <button onclick="install_prompt.prompt()">Instalar app!</button>
+      </div>
+   </div>
 </div>
 
 </body>
