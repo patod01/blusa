@@ -73,4 +73,4 @@ docker build -t bolsa . -f tools/Dockerfile
      - [x] app ver.
      - [x] dev ver.
 - [x] docker file.
-- service worker (modo offline)
+- [x] service worker (modo offline)

@@ -1,5 +1,9 @@
 let install_prompt;
 
+if ('serviceWorker' in navigator) {
+     navigator.serviceWorker.register('/slave.js');
+}
+
 function get_shit({ fecha, abono, cargo, motivo, detalle, fuente }) {
      if (fecha == null) fecha = '';
      else fecha = fecha.split('-').reverse().join('-');
