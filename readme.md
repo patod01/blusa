@@ -55,7 +55,7 @@ docker build -t bolsa . -f tools/Dockerfile
           - [x] motivo;
           - [x] detalle.
      - [x] autocompletado para motivo, detalle y fuente.
-     - lista desplegable en autocompletado para celular.
+     - ~~lista desplegable en autocompletado para celular~~.
      - [x] que los nuevos registros sean cargos por defectos.
 - [x] modo de eliminacion de registros.
      - [x] marcar registros a eliminar.

@@ -18,6 +18,10 @@ def info():
 def manifest():
      return static_file('/manifest.json', root='.')
 
+@route('/slave.js')
+def manifest():
+     return static_file('/slave.js', root='.')
+
 ### Real sh1t ###
 @route('/')
 def landing():
