@@ -43,7 +43,7 @@ docker build -t bolsa . -f tools/Dockerfile
 - [x] resumen de totales.
      - [x] recuento de registros.
      - [x] suma de abonos y cargos.
-- filtros en encabezados.
+- [ ] filtros en encabezados.
      - filtro de fechas.
      - filtro de categorias (motivo, detalle, fuente).
      - filtro de numeros (listado normal y mayor o menor que).
